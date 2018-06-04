@@ -1,0 +1,88 @@
+            for(int ch = 0; ch < 2; ch++)
+            {
+                for (int i = 0; i < text.Length; i++)
+                {
+                    if (ch == 0)
+                    {
+                        if ((text[i] == '*') || (text[i] == '/')) //+ - * /
+                        {
+                            int j = i, count = 0, index;
+                            string str = null, str1 = null;
+                            for (--j; j >= 0; j--)
+                            {
+                                if (!char.IsDigit(text[j]) && !(text[j] == ',')) break;
+                                str += text[j];
+                            }
+                            index = j + 1;
+                            for (int u = str.Length; u > 0; u--) str1 += str[u - 1];
+                            count += str1.Length;
+                            double num1 = Convert.ToDouble(str1);
+                            str = null;
+                            str1 = null;
+                            for (j = i + 1; j < text.Length; j++)
+                            {
+                                if (!char.IsDigit(text[j]) && !(text[j] == ',')) break;
+                                str += text[j];
+                            }
+                            count += str.Length;
+                            double num2 = Convert.ToDouble(str);
+
+                            if (text[i] == '*') //Умножандрий
+                            {
+                                text = (num1 * num2).ToString();
+                            }
+                            else if (text[i] == '/') //Делиндрий
+                            {
+                                text = (num1 / num2).ToString();
+                            }
+
+                            textBox1.Text = textBox1.Text.Remove(index, count + 1).Insert(index, text);
+
+                            text = textBox1.Text; //Забавный код
+                            i = 0;
+                            continue;
+                        }
+                    }
+                    else
+                    {
+                        if ((text[i] == '+') || (text[i] == '-')) //+ - * /
+                        {
+                            int j = i, count = 0, index;
+                            string str = null, str1 = null;
+                            for (--j; j >= 0; j--)
+                            {
+                                if (!char.IsDigit(text[j]) && !(text[j] == ',')) break;
+                                str += text[j];
+                            }
+                            index = j + 1;
+                            for (int u = str.Length; u > 0; u--) str1 += str[u - 1];
+                            count += str1.Length;
+                            double num1 = Convert.ToDouble(str1);
+                            str = null;
+                            str1 = null;
+                            for (j = i + 1; j < text.Length; j++)
+                            {
+                                if (!char.IsDigit(text[j]) && !(text[j] == ',')) break;
+                                str += text[j];
+                            }
+                            count += str.Length;
+                            double num2 = Convert.ToDouble(str);
+
+                            if (text[i] == '+') //Плюсандрий
+                            {
+                                text = (num1 + num2).ToString();
+                            }
+                            else if (text[i] == '-') //Минусандрий
+                            {
+                                text = (num1 - num2).ToString();
+                            }
+
+                            textBox1.Text = textBox1.Text.Remove(index, count + 1).Insert(index, text);
+
+                            text = textBox1.Text; //Забавный код
+                            i = 0;
+                            continue;
+                        }
+                    }
+                }
+            }

@@ -1,0 +1,6 @@
+----------------------------------------------------------------V. 1.0.0---------------------------------------------------------------
+· Changed symbols of multiplication and division
+· Now, when entered incorrect values, some buttons will are blocked
+· Added dropdown menu at textbox of values, with buttons of copy and paste
+· Now the main keyboard without buttons with images
+· Added icon
