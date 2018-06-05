@@ -499,7 +499,7 @@ namespace CalcApp
             this.buttonMultiply.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonMultiply.FlatAppearance.BorderSize = 0;
             this.buttonMultiply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMultiply.Font = new System.Drawing.Font("Bahnschrift", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonMultiply.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonMultiply.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonMultiply.Location = new System.Drawing.Point(221, 202);
             this.buttonMultiply.Margin = new System.Windows.Forms.Padding(2);
@@ -575,7 +575,7 @@ namespace CalcApp
             this.buttonSqrt_And_1divideX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonSqrt_And_1divideX.FlatAppearance.BorderSize = 0;
             this.buttonSqrt_And_1divideX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSqrt_And_1divideX.Font = new System.Drawing.Font("Bahnschrift Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSqrt_And_1divideX.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSqrt_And_1divideX.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonSqrt_And_1divideX.Location = new System.Drawing.Point(75, 152);
             this.buttonSqrt_And_1divideX.Margin = new System.Windows.Forms.Padding(2);

@@ -61,12 +61,14 @@ namespace CalcApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Wid = ClientSize.Width;
-            label1.Text += " " + Version;
-            ChangeSizeForm();
-            textBox2.Text = "";
-            if(Screen.PrimaryScreen.Bounds.Size.Height < 1080 && Screen.PrimaryScreen.Bounds.Size.Width < 1920)
+            Wid = ClientSize.Width; //сохранение ширины окна
+            label1.Text += " " + Version; //приписка версии к названию программы
+            ChangeSizeForm(); //нормирование ширины главного textbox'а
+            textBox2.Text = ""; //опустошение textbox'а с уравнением
+            if(Screen.PrimaryScreen.Bounds.Size.Height < 1080 &&
+                Screen.PrimaryScreen.Bounds.Size.Width < 1920) //проверка на разрешение монитора 
             {
+                //если да, то возвращает минимальный размер формы
                 Width = MinimumSize.Width;
                 Height = MinimumSize.Height;
             }
@@ -74,9 +76,9 @@ namespace CalcApp
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            ChangeSizeForm();
-            if(textBox1.Text == "Введены неверные данные" || textBox1.Text == "Деление на ноль невозможно")
-            {
+            ChangeSizeForm();//нормирование ширины главного textbox'а
+            if (textBox1.Text == "Введены неверные данные" || textBox1.Text == "Деление на ноль невозможно")
+            {//выключение некоторых кнопок при неверных исчислений
                 buttonMplus.Enabled = false;
                 buttonMR.Enabled = false;
                 buttonDivide.Enabled = false;
@@ -110,9 +112,7 @@ namespace CalcApp
                 buttonHYP.Enabled = false;
             }
             else
-            {
-                //buttonMplus.Enabled = true;
-                //buttonMR.Enabled = true;
+            {//включение - иначе
                 buttonDivide.Enabled = true;
                 buttonMultiply.Enabled = true;
                 buttonMinus.Enabled = true;
@@ -131,14 +131,12 @@ namespace CalcApp
                 buttonFact_And_deg.Enabled = true;
                 buttonCE.Enabled = true;
                 buttonPi.Enabled = true;
-                //buttonMminus.Enabled = true;
                 buttonInverse.Enabled = true;
                 buttonEquals.Enabled = true;
                 buttonLog.Enabled = true;
                 buttonBackspace.Enabled = true;
                 buttonLeftBracket.Enabled = true;
                 buttonRightBracket.Enabled = true;
-                //buttonMS.Enabled = true;
                 buttonMod.Enabled = true;
                 buttonDRG.Enabled = true;
                 buttonHYP.Enabled = true;
@@ -148,7 +146,7 @@ namespace CalcApp
         private void buttonPlusAndMinus_Click(object sender, EventArgs e)
         {
             if (textBox1.Text.Contains("e+") || textBox1.Text.Contains("e-") || textBox1.Text.Contains("E+") || textBox1.Text.Contains("E-"))
-            {
+            {//изменение знака с экс-ым числом 
                 int ie = 0;
                 for (int i = 0; i < textBox1.Text.Length; i++)
                     if (textBox1.Text[i] == 'e')
@@ -159,17 +157,17 @@ namespace CalcApp
                 else
                     textBox1.Text = textBox1.Text.Replace(minus, plus);
             }
-            else
+            else //изменение знака обычного числа
             {
                 try
                 {
                     textBox1.Text = (Convert.ToDouble(textBox1.Text) * (-1)).ToString();
                     Digit = Convert.ToDouble(textBox1.Text);
                 }
-                catch
+                catch //ошибка при попытки изменить знака
                 {
                     string tmp = textBox1.Text;
-                    for (int i = 0; i < textBox1.Text.Length; i++)
+                    for (int i = 0; i < textBox1.Text.Length; i++) //попытка исправления ошибки
                     {
                         if ((!Char.IsDigit(textBox1.Text[i]) && textBox1.Text[i] != ',') && (i != 0 || textBox1.Text[i] != minus))
                         {
@@ -177,13 +175,13 @@ namespace CalcApp
                             i--;
                         }
                     }
-                    try
+                    try //проверка исправлено ли
                     {
                         textBox1.Text = (Convert.ToDouble(textBox1.Text) * (-1)).ToString();
                         Digit = Convert.ToDouble(textBox1.Text);
                         MessageBox.Show("Code #1:\n" + $"\"{tmp}\" - to - \"{textBox1.Text}\"" + "\n...\nSuccessful corrected.\nFor continued press OK.", "Error");
                     }
-                    catch
+                    catch //если не исправленно
                     {
                         MessageBox.Show("Code #1:\n" + $"\"{tmp}\" - to - \"{textBox1.Text}\"" + "\n...\nFailed corrected.\nFor continued press OK.", "Error");
                         buttonCancel.PerformClick();
@@ -194,55 +192,51 @@ namespace CalcApp
 
         private void buttonBackspace_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length > 0)
+            if (textBox1.Text.Length > 0) //если кол-во символов больше нуля
             {
-                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
-                if (textBox1.Text.Length > 0)
+                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1); //удаляем последний символ
+                if (textBox1.Text.Length > 0)//снова проверка на кол-во символов
                 {
-                    if (textBox1.Text.Last() == plus || (textBox1.Text.Last() == minus && textBox1.Text.Length > 1))
+                    if (textBox1.Text.Last() == plus || (textBox1.Text.Last() == minus && textBox1.Text.Length > 1))//удаление при экс-ым числом
                         textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 2);
-                    else if (textBox1.Text.Last() == minus && textBox1.Text.Length == 1)
+                    else if (textBox1.Text.Last() == minus && textBox1.Text.Length == 1)//если последний символ минус - удалить его
                         textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
                 }
             }
-            if (textBox1.Text.Length == 0)
+            if (textBox1.Text.Length == 0) //если в строке не осталось символов - онулирование
                 buttonCE.PerformClick();
-            ChangeSizeForm();
+            ChangeSizeForm(); //нормирование ширины главного textbox'а
         }
 
         private void Form1_Resize(object sender, EventArgs e)
         {
+            //условия для нормирования главного textbox'а
             if (Wid < ClientSize.Width && textBox1.Size.Width > textBox1.Font.Size * textBox1.Text.Length && textBox1.Font.Size < MaxWidText)
                 textBox1.Font = new Font(textBox1.Font.FontFamily, textBox1.Font.Size + 0.5f);
             if (Wid > ClientSize.Width && textBox1.Size.Width < textBox1.Font.Size * textBox1.Text.Length && textBox1.Font.Size > MinWidText)
                 textBox1.Font = new Font(textBox1.Font.FontFamily, textBox1.Font.Size - 0.5f);
-            Wid = ClientSize.Width;
-            textBox1.TextAlign = HorizontalAlignment.Right;
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
+            Wid = ClientSize.Width; //сохранение ширины окна
+            textBox1.TextAlign = HorizontalAlignment.Right; //обновление св-ва textbox'а
         }
 
         private void NumbersAndDot(object sender, EventArgs e)
         {
-            Button b = (Button)sender;
-            if (Cleaner)
+            Button b = (Button)sender; //экземпляр кнопки, которая была нажата
+            if (Cleaner) //проверка на очистку
                 buttonCancel.PerformClick();
             Cleaner = false;
-            if (!Entering)
+            if (!Entering)//проверка вводится ли число, если нет - очистка
                 textBox1.Text = "";
-            if (Adding && textBox1.Text.Split('e')[1].Count() < 5)
+            if (Adding && textBox1.Text.Split('e')[1].Count() < 5) //добавление чисел при экс-ом числе
             {
                 if (textBox1.Text.Last() == '0' && (textBox1.Text[textBox1.Text.Length - 2] == plus || textBox1.Text[textBox1.Text.Length - 2] == minus))
                     textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
                 if (b.Text != ",")
                     textBox1.Text += b.Text;
             }
-            else
+            else //обычные условия
             {
-                if (b.Text == ",")
+                if (b.Text == ",") //десятичная точка
                 {
                     if (!textBox1.Text.Contains(",") && (textBox1.Text.Length != 0))
                         textBox1.Text += ",";
@@ -250,37 +244,37 @@ namespace CalcApp
                         textBox1.Text = "0,";
                     Entering = true;
                 }
-                else if (b.Text == "0")
+                else if (b.Text == "0") //нуль
                 {
                     if (textBox1.Text != "0")
                         textBox1.Text += "0";
                 }
-                else
+                else //обычное число
                 {
                     textBox1.Text += b.Text;
                     Entering = true;
                 }
             }
-            ChangeSizeForm();
+            ChangeSizeForm();//нормирование ширины главного textbox'а
         }
 
         private void OperatingSymbols_Click(object sender, EventArgs e)
         {
-            Cleaner = false;
+            Cleaner = false; //выключение уже не нужных свойств
             Adding = false;
-            CountOperations++;
+            CountOperations++; //счетчик
             Button b = (Button)sender;
-            if (b.Text == "xʸ")
+            if (b.Text == "xʸ") //записывание нажатой операции (всего их 7 (но это не точно))
                 Operation = "^";
             else if (b.Text == "ʸ√x")
                 Operation = "yroot";
             else
                 Operation = b.Text;
-            try
+            try //проверка введенного числа 
             {
                 PossibleAnswer = Convert.ToDouble(textBox1.Text);
             }
-            catch
+            catch//если не число, то попытка исправить его
             {
                 string tmp = textBox1.Text;
                 for (int i = 0; i < textBox1.Text.Length; i++)
@@ -305,7 +299,7 @@ namespace CalcApp
             }
             if (!Entering && CountOperations > 1 && (textBox2.Text.Last() == mul || textBox2.Text.Last() == plus || textBox2.Text.Last() == minus || textBox2.Text.Last() == dev
                || textBox2.Text.Last() == 'd' || textBox2.Text.Last() == '^' || textBox2.Text.Last() == 't'))
-            {
+            {//изменение операции -слеш- "заскобирование"
                 if (textBox2.Text.Last() == 'd')
                 {
                     if (textBox2.Text[textBox2.Text.Length - 5] != ')')
@@ -344,13 +338,13 @@ namespace CalcApp
                 CountOperations--;
             }
             else if (textBox2.Text.Contains("(") && textBox2.Text[textBox2.Text.Length - 2] == ')')
-                textBox2.Text += Operation;
+                textBox2.Text += Operation; //операция для закрытой скобки
             else if (textBox2.Text.Contains("(") && textBox2.Text[textBox2.Text.Length - 1] == '(')
-                textBox2.Text += PossibleAnswer.ToString() + " " + Operation;
+                textBox2.Text += PossibleAnswer.ToString() + " " + Operation; //операция для начала открытой скобки
             else
-                textBox2.Text += " " + PossibleAnswer.ToString() + " " + Operation;
-            Entering = false;
-            if (CountOperations > 1)
+                textBox2.Text += " " + PossibleAnswer.ToString() + " " + Operation; //обычная операция
+            Entering = false;//обновление ввода числа
+            if (CountOperations > 1) //отправка на решение уже введенного уравнения
             {
                 Solution(textBox2.Text);
                 if (Operation == Plus || Operation == Minus || Operation == "Mod")
@@ -369,24 +363,25 @@ namespace CalcApp
                 text = text.Remove(text.Length - 7);
             if (text.Length > 0 && text[0] == ' ')
                 text = text.Remove(0, 1);
-            try
+            //все что было сверху это форматирование/подготовка строки для решения
+            try //если решать ничего не нужно
             {
                 Result = Convert.ToDouble(text);
             }
-            catch
+            catch//решаем...
             {
                 if (text.Contains("(")) //handler brackets
                 {
-                    int ibegin = 0, iend = 0, CountLeftBrackets = 0, CountRightBrackets = 0, oldiend = 0;
+                    int ibegin = 0, iend = 0, CountLeftBrackets = 0, CountRightBrackets = 0, oldiend = 0;//временные файлы
                     for (int i = 0; i < text.Length; i++)
                         if (text[i] == '(')
-                            CountLeftBrackets++;
+                            CountLeftBrackets++;//поиск и счетчик левых скобок
                     for (int i = 0; i < text.Length; i++)
                         if (text[i] == ')')
-                            CountRightBrackets++;
+                            CountRightBrackets++;//поиск и счетчик правых скобок
                     if (CountLeftBrackets > CountRightBrackets)
-                        text = text + new String(')', CountLeftBrackets - CountRightBrackets);
-                    for (int loop = 0; loop < CountLeftBrackets; loop++)
+                        text = text + new String(')', CountLeftBrackets - CountRightBrackets);//выравнивание скобок
+                    for (int loop = 0; loop < CountLeftBrackets; loop++)//решение всех собок
                     {
                         for (int i = 0; i < text.Length; i++)
                             if (text[i] == '(')
@@ -1034,8 +1029,8 @@ namespace CalcApp
             }
         }
 
-        private void SolutionFunc(string text)
-        { //text is briefly func. Example: "fact(5)" will "120"
+        private void SolutionFunc(string text) //text is briefly func. Example: "fact(5)" will "120"
+        {
             if (text[0] == ' ')
                 text = text.Remove(0, 1);
             int ibegin = 0, iend = 0;

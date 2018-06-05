@@ -120,16 +120,17 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonMaximaze.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EwAACxMBAJqcGAAAADBJREFUKFONijEOACAQg/z/p88YcEWbAEvXfO4eTwtkC2QLZAtkC2QLZAtkC/Te
-        zAZz3k7AQ/0BAgAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAwSURBVChTjYoxDgAgEIP8/6fPGHBFmwBL13zuHk8LZAtk
+        C2QLZAtkC2QLZAv03swGc95OwEP9AQIAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="buttonEscape.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EwAACxMBAJqcGAAAAFFJREFUKFONiwkOwDAIw/j/p5kMBNihapbctUlm7v5LXcC+6I6jhKoTZbiHXTxH
-        mEcWUuxshlCh6C6+egAt7xKUzzDiGUmI+yvA+vHW7eCg2wXquQUKWtBGEgAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAABRSURBVChTjYsJDsAwCMP4/6eZDATYoWqW3LVJZu7+S13A
+        vuiOo4SqE2W4h108R5hHFlLsbIZQoeguvnoALe8SlM8w4hlJiPsrwPrx1u3goNsF6rkFClrQRhIAAAAA
+        SUVORK5CYII=
 </value>
   </data>
   <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
