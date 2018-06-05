@@ -88,7 +88,6 @@ namespace CalcApp
             this.buttonMenu = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonFE = new System.Windows.Forms.Button();
             this.buttonHYP = new System.Windows.Forms.Button();
             this.buttonDRG = new System.Windows.Forms.Button();
             this.buttonM = new System.Windows.Forms.Button();
@@ -1149,7 +1148,6 @@ namespace CalcApp
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66833F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.32333F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.67167F));
-            this.tableLayoutPanel2.Controls.Add(this.buttonFE, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.buttonHYP, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.buttonDRG, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.buttonM, 4, 0);
@@ -1161,24 +1159,6 @@ namespace CalcApp
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(364, 38);
             this.tableLayoutPanel2.TabIndex = 32;
-            // 
-            // buttonFE
-            // 
-            this.buttonFE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.buttonFE.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonFE.Enabled = false;
-            this.buttonFE.FlatAppearance.BorderSize = 0;
-            this.buttonFE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFE.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonFE.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonFE.Location = new System.Drawing.Point(122, 2);
-            this.buttonFE.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonFE.Name = "buttonFE";
-            this.buttonFE.Size = new System.Drawing.Size(56, 34);
-            this.buttonFE.TabIndex = 2;
-            this.buttonFE.Text = "F-E";
-            this.buttonFE.UseVisualStyleBackColor = false;
-            this.buttonFE.Visible = false;
             // 
             // buttonHYP
             // 
@@ -1340,7 +1320,6 @@ namespace CalcApp
         private System.Windows.Forms.Button buttonMenu;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button buttonFE;
         private System.Windows.Forms.Button buttonHYP;
         private System.Windows.Forms.Button buttonDRG;
         private System.Windows.Forms.Label labelMode;

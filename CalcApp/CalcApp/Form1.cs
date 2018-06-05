@@ -17,12 +17,7 @@ namespace CalcApp
             InitializeComponent();
         }
 
-        //double[] nums = new double[100];
-        //public string[] znaks = new string[100];
-        //public int moves { get; set; } = 0;
-        //List<int> nums = new List<int> { };
-        //char Znak { get; set; }
-        //int Count { get; set; } = 0;
+        //
 
         public const string Version = "1.0.0", LastUpdate = "LastUpdate:\n· Changed symbols of multiplication and division\n· Now, when entered incorrect values, some buttons will are blocked\n· Added dropdown menu at textbox of values, with buttons of copy and paste\n· Now the main keyboard without buttons with images\n· Added icon";
 
@@ -375,26 +370,26 @@ namespace CalcApp
                     int ibegin = 0, iend = 0, CountLeftBrackets = 0, CountRightBrackets = 0, oldiend = 0;//временные файлы
                     for (int i = 0; i < text.Length; i++)
                         if (text[i] == '(')
-                            CountLeftBrackets++;//поиск и счетчик левых скобок
+                            CountLeftBrackets++;//счетчик левых скобок
                     for (int i = 0; i < text.Length; i++)
                         if (text[i] == ')')
-                            CountRightBrackets++;//поиск и счетчик правых скобок
+                            CountRightBrackets++;//счетчик правых скобок
                     if (CountLeftBrackets > CountRightBrackets)
                         text = text + new String(')', CountLeftBrackets - CountRightBrackets);//выравнивание скобок
                     for (int loop = 0; loop < CountLeftBrackets; loop++)//решение всех собок
                     {
-                        for (int i = 0; i < text.Length; i++)
+                        for (int i = 0; i < text.Length; i++) //поиск последней левой скобки
                             if (text[i] == '(')
                                 ibegin = i;
-                        for (int j = ibegin + 1; j < text.Length; j++)
+                        for (int j = ibegin + 1; j < text.Length; j++)//поиск первой правой скобки
                             if (text[j] == ')')
                             {
                                 iend = j;
                                 break;
                             }
-                        oldiend = iend;
+                        oldiend = iend;//сохранение индекса для выхода из рекурсии
                         string tmp = text;
-                        if (ibegin > 0 && text[ibegin - 1] != ' ')
+                        if (ibegin > 0 && text[ibegin - 1] != ' ')//получаем функцию
                         {
                             for (int i = ibegin - 1; i >= 0 && text[i] != ' '; i--)
                                 ibegin--;
@@ -404,19 +399,19 @@ namespace CalcApp
                             if (iend != text.Length - 1)
                                 tmp = text.Remove(iend + 1);
                             tmp = tmp.Remove(0, ibegin);
-                            SolutionFunc(tmp);
+                            SolutionFunc(tmp);//и отправляем ее на решение
                         }
-                        else
+                        else//получаем строку внитри скобок
                         {
                             if (oldiend <= text.Length - 1)
                                 tmp = text.Remove(oldiend);
                             if(tmp[0] == '(')
                                 tmp = tmp.Remove(0, ibegin + 1);
-                            Solution(tmp);
+                            Solution(tmp);//и отправляем ее на решение(рекурсия)
                         }
-                        CountBrackets--;
-                        text = text.Remove(ibegin, oldiend - ibegin + 1);
-                        text = text.Insert(ibegin, Result.ToString());
+                        CountBrackets--;//отсчитываем счетчик, т.к. решили скобку
+                        text = text.Remove(ibegin, oldiend - ibegin + 1);//убираем решенную скобку 
+                        text = text.Insert(ibegin, Result.ToString());//вставляем решение скобки
                     }
                 }
                 try
@@ -424,31 +419,31 @@ namespace CalcApp
                     for (int i = 0; i < text.Length; i++) //degree and(or) root
                     {
                         if ((text[i] == '^' && text[i - 1] == ' ' && text[i + 1] == ' ') || (text[i] == 'y' && text[i + 1] == 'r' && text[i + 2] == 'o' && text[i + 3] == 'o' && text[i + 4] == 't'))
-                        {
-                            int ibegin = i - 2, iend = i + 2;
+                        { //решение степеней
+                            int ibegin = i - 2, iend = i + 2;//создание начальных индексов
                             if (text[i] == 'y' && text[i + 1] == 'r' && text[i + 2] == 'o' && text[i + 3] == 'o' && text[i + 4] == 't')
-                                iend += 4;
+                                iend += 4; 
                             string tmp = null;
                             for (; ibegin >= 0 && (Char.IsDigit(text[ibegin]) || text[ibegin] == ',' || text[ibegin] == minus); --ibegin)
-                                tmp = text[ibegin].ToString() + tmp;
+                                tmp = text[ibegin].ToString() + tmp; //поиск левого числа, т.е. стоящего перед операцией
                             ibegin++;
                             Digit = Convert.ToDouble(tmp);
                             tmp = null;
                             for (; iend <= text.Length - 1 && (Char.IsDigit(text[iend]) || text[iend] == ','); iend++)
-                                tmp += text[iend].ToString();
+                                tmp += text[iend].ToString();//поиск правого числа, т.е. стоящего после операции
                             Number = Convert.ToDouble(tmp);
                             switch (text[i])
                             {
-                                case '^':
+                                case '^': //возведение в степень
                                     text = text.Remove(ibegin, iend - ibegin);
                                     text = text.Insert(ibegin, Math.Pow(Digit, Number).ToString());
                                     break;
-                                case 'y':
+                                case 'y': //нахождение корня
                                     text = text.Remove(ibegin, iend - ibegin);
                                     text = text.Insert(ibegin, Math.Pow(Digit, 1.0 / Number).ToString());
                                     break;
                             }
-                            i = 0;
+                            i = 0;//после решения оперции, поиск оперций происходит сначала
                         }
                     }
                     for (int i = 0; i < text.Length; i++) //multiplication and(or) dividing and(or) Mod
@@ -469,15 +464,15 @@ namespace CalcApp
                             Number = Convert.ToDouble(tmp);
                             switch (text[i])
                             {
-                                case '×':
+                                case '×': //умножение
                                     text = text.Remove(ibegin, iend - ibegin);
                                     text = text.Insert(ibegin, (Digit * Number).ToString());
                                     break;
-                                case '÷':
+                                case '÷': //деление
                                     text = text.Remove(ibegin, iend - ibegin);
                                     text = text.Insert(ibegin, (Digit / Number).ToString());
                                     break;
-                                case 'M':
+                                case 'M': //остаток от деления
                                     text = text.Remove(ibegin, iend - ibegin);
                                     text = text.Insert(ibegin, (Digit % Number).ToString());
                                     break;
@@ -501,11 +496,11 @@ namespace CalcApp
                             Number = Convert.ToDouble(tmp);
                             switch (text[i])
                             {
-                                case '+':
+                                case '+': //складывание
                                     text = text.Remove(ibegin, iend - ibegin);
                                     text = text.Insert(ibegin, (Digit + Number).ToString());
                                     break;
-                                case '-':
+                                case '-': //вычитание
                                     text = text.Remove(ibegin, iend - ibegin);
                                     text = text.Insert(ibegin, (Digit - Number).ToString());
                                     break;
@@ -514,24 +509,24 @@ namespace CalcApp
                         }
                     }
                 }
-                catch
-                {
+                catch //если же при решение случилась ошибка 
+                {//она обрабатывается как нерешаемая
                     MessageBox.Show("Code #3:\n" + $@"""{text}""" + "\n...\nUnknown error\nFor continued press OK.", "Error");
                     buttonCancel.PerformClick();
                 }
-                try
+                try//попытка принять решение, если удалось, то оно записывается в Result
                 {
                     text = text.Replace('.', ',');
                     Result = Convert.ToDouble(text);
                 }
-                catch
+                catch//что-то пошло не так
                 {
-                    try
+                    try//попытка исправить
                     {
                         Solution(text);
                         MessageBox.Show("Code #2:\n" + $@"""{text}""" + "\n...\nSuccessful corrected.\nFor continued press OK.", "Error");
                     }
-                    catch
+                    catch//обработка неудачи
                     {
                         MessageBox.Show("Code #2:\n" + $@"""{text}""" + "\n...\nFailed corrected.\nFor continued press OK.", "Error");
                         buttonCancel.PerformClick();
@@ -541,7 +536,7 @@ namespace CalcApp
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
-        {
+        {//кнопочка удаления всего
             buttonCE.PerformClick();
             textBox1.Text = "0";
             textBox2.Text = "";
@@ -551,7 +546,7 @@ namespace CalcApp
         }
 
         private void buttonCE_Click(object sender, EventArgs e)
-        {
+        {//остановка действий и очиска поля
             textBox1.Text = "0";
             Entering = false;
             Adding = false;
@@ -562,14 +557,14 @@ namespace CalcApp
         {
             Cleaner = false;
             Adding = false;
-            try
-            {
+            try//попытка получить последнюю операцию и число
+            {//для повторного вычисления
                 if (textBox2.Text.Last() != 'd')
                     Operation = textBox2.Text.Last().ToString();
                 PossibleAnswer = Convert.ToDouble(textBox1.Text);
             }
             catch { }
-            if(textBox1.Text.Contains("e"))
+            if(textBox1.Text.Contains("e"))//представления экс-ого числа в обычном виде
             {
                 try
                 {
@@ -577,49 +572,49 @@ namespace CalcApp
                 }
                 catch { }
             }
-
+            //решения/вычисления
             if (CountOperations == 0 && Operation != "" && !(textBox2.Text.Contains(")") || textBox2.Text.Contains("(")))
-                Solution(textBox1.Text + " " + Operation + " " + PossibleAnswer.ToString());
+                Solution(textBox1.Text + " " + Operation + " " + PossibleAnswer.ToString()); //повторное вычисление
             else if (textBox2.Text.Length > 2 && textBox2.Text[textBox2.Text.Length - 2] != ')')
-                Solution(textBox2.Text + " " + PossibleAnswer.ToString());
+                Solution(textBox2.Text + " " + PossibleAnswer.ToString());//обычное вычисление
             else if (CountOperations == 0 && (textBox2.Text.Length == 0 || textBox2.Text.Contains("(")))
-                Result = Convert.ToDouble(textBox1.Text);
+                Result = Convert.ToDouble(textBox1.Text);//уже решенно
             else
-                Solution(textBox2.Text);
+                Solution(textBox2.Text);//решение строки с уравнением
 
-            if (Double.IsInfinity(Result))
+            if (Double.IsInfinity(Result))//проверка на бесконечность
             {
                 textBox1.Text = "Деление на ноль невозможно";
                 Cleaner = true;
             }
-            else
+            else//вставка решения
             {
                 textBox1.Text = Result.ToString();
                 textBox2.Text = "";
             }
-            Entering = false;
+            Entering = false;//завершение действий
             CountOperations = 0;
             ChangeSizeForm();
         }
 
         private void buttonEscape_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Application.Exit(); //выход
         }
 
         private Point movestart;
         private void panelTop_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)//при зажатой ЛКМ на верхней панели 
             {
-                movestart = new Point(e.X, e.Y);
+                movestart = new Point(e.X, e.Y);//получаем ее координаты
             }
         }
 
         private void panelTop_MouseMove(object sender, MouseEventArgs e)
         {
             if ((e.Button & MouseButtons.Left) != 0)
-            {
+            {//перемещаем окно за мышью
                 Point deltaPos = new Point(e.X - movestart.X, e.Y - movestart.Y);
                 Location = new Point(Location.X + deltaPos.X, Location.Y + deltaPos.Y);
             }
@@ -627,61 +622,61 @@ namespace CalcApp
 
         private void buttonMinimize_Click(object sender, EventArgs e)
         {
-            WindowState = FormWindowState.Minimized;
+            WindowState = FormWindowState.Minimized;//сворачивание окна
         }
 
         private void buttonMaximaze_Click(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Normal)
+            if (WindowState == FormWindowState.Normal)//разворачивание на весь экран
             {
                 WindowState = FormWindowState.Maximized;
-                buttonMaximaze.Image = CalcApp.Properties.Resources.icons8_Virtual_Machine_20px_1;
+                buttonMaximaze.Image = Properties.Resources.icons8_Virtual_Machine_20px_1;
             }
-            else
+            else//нормализация окна
             {
                 WindowState = FormWindowState.Normal;
-                buttonMaximaze.Image = CalcApp.Properties.Resources.рамка1;
+                buttonMaximaze.Image = Properties.Resources.рамка1;
             }
             ChangeSizeForm();
         }
 
         private void ChangeSizeForm()
-        {
+        {//регулирование размера строки в поле 
             for(int i = 0; i < 20; i++)
             {
                 if (textBox1.Size.Width > textBox1.Font.Size * textBox1.Text.Length && textBox1.Font.Size < MaxWidText)
-                    textBox1.Font = new Font(textBox1.Font.FontFamily, textBox1.Font.Size + 0.5f);
+                    textBox1.Font = new Font(textBox1.Font.FontFamily, textBox1.Font.Size + 0.5f);//увеличение
                 if (textBox1.Size.Width < textBox1.Font.Size * textBox1.Text.Length && textBox1.Font.Size > MinWidText)
-                    textBox1.Font = new Font(textBox1.Font.FontFamily, textBox1.Font.Size - 0.5f);
+                    textBox1.Font = new Font(textBox1.Font.FontFamily, textBox1.Font.Size - 0.5f);//уменьшение
             }
         }
 
         private void buttonPi_Click(object sender, EventArgs e)
-        {
+        {//вставка числа пи
             textBox1.Text = Math.PI.ToString();
             Entering = true;
         }
 
         private void buttonLeftBracket_Click(object sender, EventArgs e)
-        {
-            if (textBox2.Text != "")
+        {//открытие скобок
+            if (textBox2.Text != "")//если поле с уравнениями не пустое
             {
                 if (textBox2.Text.Last() == mul || textBox2.Text.Last() == plus || textBox2.Text.Last() == minus || textBox2.Text.Last() == dev
                || textBox2.Text.Last() == 'd' || textBox2.Text.Last() == '^' || textBox2.Text.Last() == 't')
                 {
                     if (CountBrackets <= 25)
-                    {
+                    {//если есть операция - вставки скобки
                         textBox2.Text += " (";
                         CountBrackets++;
                     }
                 }
-                else
-                {
+                else//значит было решение без операций
+                {//очистка поля и вставка скобки
                     textBox2.Text = "";
                     buttonLeftBracket.PerformClick();
                 }
             }
-            else
+            else //ставим скобку
             {
                 if (CountBrackets <= 25)
                 {
