@@ -91,7 +91,7 @@ namespace CalcApp
             this.buttonHYP = new System.Windows.Forms.Button();
             this.buttonDRG = new System.Windows.Forms.Button();
             this.buttonM = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+            this.buttonMC = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelTop.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -449,7 +449,6 @@ namespace CalcApp
             this.buttonMplus.TabIndex = 37;
             this.buttonMplus.Text = "M+";
             this.buttonMplus.UseVisualStyleBackColor = false;
-            this.buttonMplus.Click += new System.EventHandler(this.buttonM_Click);
             // 
             // buttonMR
             // 
@@ -469,7 +468,6 @@ namespace CalcApp
             this.buttonMR.TabIndex = 27;
             this.buttonMR.Text = "MR";
             this.buttonMR.UseVisualStyleBackColor = false;
-            this.buttonMR.Click += new System.EventHandler(this.buttonM_Click);
             // 
             // buttonDivide
             // 
@@ -796,7 +794,6 @@ namespace CalcApp
             this.buttonMminus.TabIndex = 32;
             this.buttonMminus.Text = "M-";
             this.buttonMminus.UseVisualStyleBackColor = false;
-            this.buttonMminus.Click += new System.EventHandler(this.buttonM_Click);
             // 
             // buttonInverse
             // 
@@ -911,7 +908,6 @@ namespace CalcApp
             this.buttonMS.TabIndex = 7;
             this.buttonMS.Text = "MS";
             this.buttonMS.UseVisualStyleBackColor = false;
-            this.buttonMS.Click += new System.EventHandler(this.buttonM_Click);
             // 
             // buttonMod
             // 
@@ -1151,7 +1147,7 @@ namespace CalcApp
             this.tableLayoutPanel2.Controls.Add(this.buttonHYP, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.buttonDRG, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.buttonM, 4, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button10, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.buttonMC, 3, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 162);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -1210,24 +1206,22 @@ namespace CalcApp
             this.buttonM.Text = "M";
             this.buttonM.UseVisualStyleBackColor = false;
             this.buttonM.Visible = false;
-            this.buttonM.Click += new System.EventHandler(this.buttonM_Click);
             // 
-            // button10
+            // buttonMC
             // 
-            this.button10.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button10.FlatAppearance.BorderSize = 0;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button10.Location = new System.Drawing.Point(243, 2);
-            this.button10.Margin = new System.Windows.Forms.Padding(2);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(56, 34);
-            this.button10.TabIndex = 4;
-            this.button10.Text = "MC";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Visible = false;
-            this.button10.Click += new System.EventHandler(this.buttonM_Click);
+            this.buttonMC.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonMC.FlatAppearance.BorderSize = 0;
+            this.buttonMC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMC.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonMC.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonMC.Location = new System.Drawing.Point(243, 2);
+            this.buttonMC.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonMC.Name = "buttonMC";
+            this.buttonMC.Size = new System.Drawing.Size(56, 34);
+            this.buttonMC.TabIndex = 4;
+            this.buttonMC.Text = "MC";
+            this.buttonMC.UseVisualStyleBackColor = true;
+            this.buttonMC.Visible = false;
             // 
             // Form1
             // 
@@ -1324,7 +1318,7 @@ namespace CalcApp
         private System.Windows.Forms.Button buttonDRG;
         private System.Windows.Forms.Label labelMode;
         private System.Windows.Forms.Button buttonM;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button buttonMC;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;

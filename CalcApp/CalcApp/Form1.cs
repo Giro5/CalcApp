@@ -17,42 +17,41 @@ namespace CalcApp
             InitializeComponent();
         }
 
-        //
+        public const string Version = "1.0.1", //версия
+            LastUpdate = "LastUpdate:\n· Added many comments in the code";//комментарии к версии
 
-        public const string Version = "1.0.0", LastUpdate = "LastUpdate:\n· Changed symbols of multiplication and division\n· Now, when entered incorrect values, some buttons will are blocked\n· Added dropdown menu at textbox of values, with buttons of copy and paste\n· Now the main keyboard without buttons with images\n· Added icon";
+        double Result { get; set; } = 0;//для результата решения
+        double Digit { get; set; } = 0;//первое число для нахождения ответа
+        double Number { get; set; } = 0;//второе число для нахождения ответа
+        double PossibleAnswer { get; set; }//может временно содержать некоторый ответ
+        double PiDivide180 { get; } = 0.01745329251994329576923690768489d;//константа пи/180
+        double PiDivede200 { get; } = 0.0157079632679489661923132169164d;//константа пи/200
+        //double[] MNumbers = new double[0];
 
-        double Result { get; set; } = 0;
-        double Digit { get; set; } = 0;
-        double Number { get; set; } = 0;
-        double PossibleAnswer { get; set; }
-        double PiDivide180 { get; } = 0.01745329251994329576923690768489d;
-        double PiDivede200 { get; } = 0.0157079632679489661923132169164d;
-        double[] MNumbers = new double[0];
+        string Operation { get; set; } = "";//при обработки операции, будет ее содержать
+        string DRG { get; set; } = "DEG";//режим решения тригоном. фун
 
-        string Operation { get; set; } = "";
-        string DRG { get; set; } = "DEG";
+        string Mul { get; } = "×";//константа строки умножения
+        string Plus { get; } = "+";//константа строки плюса
+        string Minus { get; } = "-";//константа строки минуса
+        string Dev { get; } = "÷";//константа строки деления
 
-        string Mul { get; } = "×";
-        string Plus { get; } = "+";
-        string Minus { get; } = "-";
-        string Dev { get; } = "÷";
+        char mul { get; } = '×';//константа символа умножения
+        char plus { get; } = '+';//константа символа плюса
+        char minus { get; } = '-';//константа символа минуса
+        char dev { get; } = '÷';//константа символа деления
 
-        char mul { get; } = '×';
-        char plus { get; } = '+';
-        char minus { get; } = '-';
-        char dev { get; } = '÷';
+        bool Entering { get; set; } = false;//вводится ли в данный момент число
+        bool Cleaner { get; set; } = false;//очищать ли при след. действии поле
+        bool Stoper { get; set; } = false;//введены некорректные данные
+        bool Adding { get; set; } = false;//добавлять к числу в экс-ом виде
 
-        bool Entering { get; set; } = false;
-        bool Cleaner { get; set; } = false;
-        bool Stoper { get; set; } = false;
-        bool Adding { get; set; } = false;
+        int CountOperations { get; set; } = 0;//кол-во операций
+        int CountBrackets { get; set; } = 0;//кол-во скобок
+        int Wid { get; set; }//ширина формы
 
-        int CountOperations { get; set; } = 0;
-        int CountBrackets { get; set; } = 0;
-        int Wid { get; set; }
-
-        float MinWidText { get; } = 12f;
-        float MaxWidText { get; } = 32f;
+        float MinWidText { get; } = 12f;//мин. размер поля для числа
+        float MaxWidText { get; } = 32f;//макс. размер поля для числа
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -602,7 +601,7 @@ namespace CalcApp
             Application.Exit(); //выход
         }
 
-        private Point movestart;
+        private Point movestart;//точка для сохранения коорд. мыши
         private void panelTop_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)//при зажатой ЛКМ на верхней панели 
@@ -689,7 +688,7 @@ namespace CalcApp
 
         private void buttonRightBracket_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text.Contains("("))
+            if (textBox2.Text.Contains("("))//если левые скобки
             {
                 int clb = 0, crb = 0;
                 for(int i = 0; i < textBox2.Text.Length; i++)
@@ -699,7 +698,7 @@ namespace CalcApp
                     else if (textBox2.Text[i] == ')')
                         crb++;
                 }
-                if (clb > crb)
+                if (clb > crb)//закрывает скобку только когда есть, что закрыть
                 {
                     if (textBox2.Text.Contains("(") && textBox2.Text[textBox2.Text.Length - 1] == '(')
                         textBox2.Text += textBox1.Text + ") ";
@@ -714,7 +713,7 @@ namespace CalcApp
         }
 
         private void buttonDRG_Click(object sender, EventArgs e)
-        {
+        {//переключатель режима решения тригоном. фун.
             Button b = (Button)sender;
             if (DRG == "DEG")
             {
@@ -731,12 +730,12 @@ namespace CalcApp
                 DRG = "DEG";
                 b.Font = new Font(b.Font.FontFamily, 12f, FontStyle.Bold);
             }
-        b.Text = DRG;
+            b.Text = DRG;
         }
 
         private void buttonHYP_Click(object sender, EventArgs e)
-        {
-            Button b = (Button)sender;
+        {//вкл./выкл. режим гиперболических фун.
+            Button b = (Button)sender; 
             b.FlatAppearance.BorderColor = Color.White;
             if (b.FlatAppearance.BorderSize == 0)
                 b.FlatAppearance.BorderSize = 2;
@@ -746,7 +745,7 @@ namespace CalcApp
         }
 
         private void RefreshButtonTrigonometry()
-        {
+        {//обновляет названия кнопок с тригонометрией
             if (buttonHYP.FlatAppearance.BorderSize != 0)
             {
                 if (buttonInverse.FlatAppearance.BorderSize != 0)
@@ -780,7 +779,7 @@ namespace CalcApp
         }
 
         private void buttonInverse_Click(object sender, EventArgs e)
-        {
+        {//меняет раскладки клавиатуры функций
             Button b = (Button)sender;
             b.FlatAppearance.BorderColor = Color.White;
             if (b.FlatAppearance.BorderSize == 0)
@@ -840,12 +839,12 @@ namespace CalcApp
          */
 
         private void FuncOperation_Click(object sender, EventArgs e)
-        {
+        {//при клике на фун.
             Cleaner = false;
             Button b = (Button)sender;
             string str = null;
             //list of funcs
-            switch (b.Text)
+            switch (b.Text)//списочек который определяет функцию
             {
                 case "n!":
                     str = "fact";
@@ -880,7 +879,8 @@ namespace CalcApp
                     else if (DRG == "GRAD")
                         str = "tan₉";
                     break;
-                //case "xʸ": break;
+                //case "xʸ": break; - их тут нет потому, что по-моей логики они операции
+                //case "ꙷ√x": break; - оставил тут, как знак того, что я их помню
                 case "√":
                     str = "√";
                     break;
@@ -926,7 +926,6 @@ namespace CalcApp
                     else if (DRG == "GRAD")
                         str = "tan₉ˉ¹";
                     break;
-                //case "ꙷ√x": break;
                 case "⅟ₓ":
                     str = "1/";
                     break;
@@ -953,11 +952,12 @@ namespace CalcApp
                     break;
             }
             if (str != "e+0")
-            {
+            {//временное решения фун., а точнее работа со скобками 2
                 if (textBox2.Text.Length > 3 && textBox2.Text[textBox2.Text.Length - 2] == ')')
-                {
+                {//т.е. вот это все происходит по вине того, что скобка есть в поле уравнения
                     string text = textBox2.Text;
-                    int CountLeftBrackets = 0, CountRightBrackets = 0, ibegin = 0, iend = 0;// ((( )))   ( )( )  (( ) ( ))
+                    int CountLeftBrackets = 0, CountRightBrackets = 0, ibegin = 0, iend = 0;
+                    // ((( )))   ( )( )  (( ) ( )) - виды возможных скобок 
                     for (int i = 0; i < text.Length; i++)
                         if (text[i] == ')')
                         {
@@ -989,20 +989,20 @@ namespace CalcApp
                     textBox2.Text = textBox2.Text.Remove(ibegin, iend - ibegin + 1);
                     textBox2.Text = textBox2.Text.Insert(ibegin, str);
                 }
-                else
+                else//если скобок небыло
                 {
                     str += "(" + textBox1.Text + ")";
                     textBox2.Text += " " + str + " ";
                 }
-                SolutionFunc(str);
+                SolutionFunc(str);//отправка на решение
                 if (Stoper)
-                {
+                {//ну там видно что это handler of exceptions
                     buttonCE.PerformClick();
                     textBox1.Text = "Введены неверные данные";
                     Stoper = false;
                     Cleaner = true;
                 }
-                else
+                else//если все хорошо с решением
                     textBox1.Text = Result.ToString();
                 ChangeSizeForm();
                 Entering = false;
@@ -1025,7 +1025,7 @@ namespace CalcApp
         }
 
         private void SolutionFunc(string text) //text is briefly func. Example: "fact(5)" will "120"
-        {
+        {//решение функций(хорошо что я решил это делать в отдельном методе, а то в Solution'е итак много всякого) 
             if (text[0] == ' ')
                 text = text.Remove(0, 1);
             int ibegin = 0, iend = 0;
@@ -1040,15 +1040,16 @@ namespace CalcApp
                     iend = j;
             string tmp = text.Remove(iend);
             tmp = tmp.Remove(0, ibegin + 1);
-            Solution(tmp);
+            Solution(tmp);//рекурсия ^^
             string func = text.Remove(ibegin);
+            //все что вверху было, да-да это обработка функции для решения
             switch (func)
-            {
-                case "fact":
+            {//решение огромного кол-во фун.
+                case "fact"://факториал
                     for (double i = Result - 1.0; i > 1.0; i--)
                         Result *= i;
                     break;
-                case "10^":
+                case "10^"://10 в вашей степени (много не ставить, а то даже кальк винды ругается)
                     Result = Math.Pow(10.0, Result);
                     if (Double.IsInfinity(Result))
                         Stoper = true;
@@ -1057,7 +1058,7 @@ namespace CalcApp
                 case "sinᵣ":
                     Result *= 1.0 / PiDivide180;
                     Result = Math.Round(Result);
-                    goto case "sinₒ";
+                    goto case "sinₒ";//мое гениальное решение проблемы табличных значений
                 case "sinₒ":
                     if ((Result % 90.0 != 0.0) || (Result / 90.0 % 2.0 != 0.0))
                         Result = Math.Sin(PiDivide180 * Result);
@@ -1107,22 +1108,22 @@ namespace CalcApp
                         Stoper = true;
                     break;
                     //ending trigonometry func
-                case "√":
+                case "√"://квадратный корень
                     if (Result >= 0)
                         Result = Math.Sqrt(Result);
                     else
                         Stoper = true;
                     break;
-                case "sqr":
+                case "sqr"://квадрат
                     Result = Math.Pow(Result, 2.0);
                     break;
-                case "log":
+                case "log"://десятичный логарифм
                     if (Result > 0)
                         Result = Math.Log10(Result);
                     else
                         Stoper = true;
                     break;
-                case "ln":
+                case "ln"://натуральный логарифм
                     if (Result > 0)
                         Result = Math.Log(Result);
                     else
@@ -1133,7 +1134,7 @@ namespace CalcApp
                     Result -= Digit;
                     Result = Digit + Result * 100 / 60;
                     break;
-                case "e^":
+                case "e^"://возведение в экспаненту
                     Result = Math.Exp(Result);
                     break;
                 case "dms": //conversion to degrees
@@ -1179,12 +1180,12 @@ namespace CalcApp
                     Result = 1.0 / PiDivede200 * Math.Atan(Result);
                     break;
                     //ending arc trigonometry func
-                case "1/":
+                case "1/"://один делите на, что хотите(кроме нуля)
                     Result = 1.0 / Result;
                     if (Double.IsInfinity(Result))
                         Stoper = true;
                     break;
-                case "cube":
+                case "cube"://куб
                     Result = Math.Pow(Result, 3.0);
                     break;
                     //hyperbolic trigonometry func
@@ -1217,7 +1218,7 @@ namespace CalcApp
         }
 
         private void buttonSin_And_Arcsin_TextChanged(object sender, EventArgs e)
-        {
+        {//штука изменяет размеры шрифта(это даже не смешно(это больно))
             if (buttonSin_And_Arcsin.Text.Contains("hˉ¹"))
             {
                 buttonSin_And_Arcsin.Font = new Font(buttonSin_And_Arcsin.Font.FontFamily, 12.5f);
@@ -1244,32 +1245,32 @@ namespace CalcApp
             }
         }
 
-        Form2 f2 = new Form2();
-        private void buttonM_Click(object sender, EventArgs e)
-        {
-            Button b = (Button)sender;
-            if (b.Text == "M")
-            {
-                f2.Show();
-                f2.Location = Location;
-                f2.Width = Width;
-            }
-            
-        }
+        //Form2 f2 = new Form2();
+        //private void buttonM_Click(object sender, EventArgs e)
+        //{
+        //    Button b = (Button)sender;
+        //    if (b.Text == "M")
+        //    {
+        //        f2.Show();
+        //        f2.Location = Location;
+        //        f2.Width = Width;
+        //    }
+
+        //}
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        {//копирует в поле числа
             textBox1.SelectAll();
             textBox1.Copy();
         }
 
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        {//вставляет в поле числа
             string tmp = textBox1.Text;
             textBox1.Text = "";
             textBox1.Paste();
             for (int i = 0; i < textBox1.Text.Length; i++)
-            {
+            {//если вы не правильно откуда-то скопировали, тут это попробуют утрести
                 if ((!Char.IsDigit(textBox1.Text[i]) && textBox1.Text[i] != ',') && (i != 0 || textBox1.Text[i] != minus))
                 {
                     textBox1.Text = textBox1.Text.Remove(i, 1);
@@ -1283,28 +1284,28 @@ namespace CalcApp
                 Entering = true;
             }
             catch
-            {
+            {//ну или не попробуют
                 textBox1.Text = tmp;
             }
             ChangeSizeForm();
         }
 
         private void label1_MouseHover(object sender, EventArgs e)
-        {
+        {//показывает апдейтики при наведении на версию
             toolTip1.Show(LastUpdate, label1);
         }
     }
 }
-/* Здеся будут мысли и справочные мат-лы, т.к. чет калькулятор сложный какой-то
- * hyp - гиперболические тригонометрические функции(если шо, гуглить формулы(я их даже не проходил))
+/* Здесь будут мысли и справочные мат-лы, т.к. что-то калькулятор сложный какой-то
+ * hyp - гиперболические тригонометрические функции(если что, гуглить формулы(я их даже не проходил))
  * EXP(или EXF) ну тип представление числа в экс-ом формате, а если буквы P и F имеют разный смысл, то плакать
  * я боюсь скобок
  * градусы, радианы и ... что? Грады?
  * dms перевод десятичных чисел в градусы, минуты, секунды; degree - наоборот (я вот хз)
- * ща бы историю расчетов не забыть...
+ * сейчас бы историю расчетов не забыть...
  * реинкарнация или копирайт? ну да
- * ммм кнопочки, ммм шрифт, пасеба за то что не надо бояться за выступы(нет)
- * дааа.. иконочка, ща изи вставлю......................................................да ну нафиг
+ * ммм кнопочки, ммм шрифт, спасибо за то что не надо бояться за выступы(нет)
+ * дааа.. иконочка, ща легко вставлю......................................................да ну на...
  * делаю калькулятор, но больше работаю со строками, ничего не обычного 
  * 
  */
