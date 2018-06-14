@@ -92,11 +92,16 @@ namespace CalcApp
             this.buttonDRG = new System.Windows.Forms.Button();
             this.buttonM = new System.Windows.Forms.Button();
             this.buttonMC = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.cgjhghjToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.baseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.scientificToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelTop.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button0
@@ -1115,7 +1120,6 @@ namespace CalcApp
             // buttonMenu
             // 
             this.buttonMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.buttonMenu.Enabled = false;
             this.buttonMenu.FlatAppearance.BorderSize = 0;
             this.buttonMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMenu.Font = new System.Drawing.Font("Times New Roman", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1126,7 +1130,7 @@ namespace CalcApp
             this.buttonMenu.Size = new System.Drawing.Size(40, 40);
             this.buttonMenu.TabIndex = 0;
             this.buttonMenu.UseVisualStyleBackColor = true;
-            this.buttonMenu.Visible = false;
+            this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
             // 
             // toolTip1
             // 
@@ -1223,6 +1227,55 @@ namespace CalcApp
             this.buttonMC.UseVisualStyleBackColor = true;
             this.buttonMC.Visible = false;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.menuStrip1.AutoSize = false;
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cgjhghjToolStripMenuItem,
+            this.baseToolStripMenuItem1,
+            this.scientificToolStripMenuItem});
+            this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Table;
+            this.menuStrip1.Location = new System.Drawing.Point(0, 69);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.menuStrip1.Size = new System.Drawing.Size(219, 531);
+            this.menuStrip1.TabIndex = 33;
+            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Visible = false;
+            this.menuStrip1.MouseLeave += new System.EventHandler(this.menuStrip1_MouseLeave);
+            // 
+            // cgjhghjToolStripMenuItem
+            // 
+            this.cgjhghjToolStripMenuItem.Name = "cgjhghjToolStripMenuItem";
+            this.cgjhghjToolStripMenuItem.Size = new System.Drawing.Size(12, 4);
+            // 
+            // baseToolStripMenuItem1
+            // 
+            this.baseToolStripMenuItem1.AutoSize = false;
+            this.baseToolStripMenuItem1.Font = new System.Drawing.Font("Boycott", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.baseToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.baseToolStripMenuItem1.Name = "baseToolStripMenuItem1";
+            this.baseToolStripMenuItem1.Size = new System.Drawing.Size(200, 33);
+            this.baseToolStripMenuItem1.Text = "standart";
+            this.baseToolStripMenuItem1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.baseToolStripMenuItem1.Click += new System.EventHandler(this.buttonMenuChange_Click);
+            // 
+            // scientificToolStripMenuItem
+            // 
+            this.scientificToolStripMenuItem.AutoSize = false;
+            this.scientificToolStripMenuItem.Font = new System.Drawing.Font("Boycott", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.scientificToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.scientificToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.scientificToolStripMenuItem.Name = "scientificToolStripMenuItem";
+            this.scientificToolStripMenuItem.Size = new System.Drawing.Size(200, 33);
+            this.scientificToolStripMenuItem.Text = "scientific";
+            this.scientificToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.scientificToolStripMenuItem.Click += new System.EventHandler(this.buttonMenuChange_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1230,6 +1283,7 @@ namespace CalcApp
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(368, 600);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.panel1);
@@ -1255,6 +1309,8 @@ namespace CalcApp
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1322,6 +1378,10 @@ namespace CalcApp
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem cgjhghjToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem baseToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem scientificToolStripMenuItem;
     }
 }
 

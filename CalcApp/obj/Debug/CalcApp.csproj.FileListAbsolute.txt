@@ -31,3 +31,14 @@ C:\Users\Giro\Desktop\GitHub\CalcApp\CalcApp\CalcApp\obj\Debug\CalcApp.csproj.Ge
 C:\Users\Giro\Desktop\GitHub\CalcApp\CalcApp\CalcApp\obj\Debug\CalcApp.csproj.CoreCompileInputs.cache
 C:\Users\Giro\Desktop\GitHub\CalcApp\CalcApp\CalcApp\obj\Debug\CalcApp.exe
 C:\Users\Giro\Desktop\GitHub\CalcApp\CalcApp\CalcApp\obj\Debug\CalcApp.pdb
+C:\Users\Giro\Desktop\GitHub\CalcApp\CalcApp\bin\Debug\CalcApp.exe.config
+C:\Users\Giro\Desktop\GitHub\CalcApp\CalcApp\bin\Debug\CalcApp.exe
+C:\Users\Giro\Desktop\GitHub\CalcApp\CalcApp\bin\Debug\CalcApp.pdb
+C:\Users\Giro\Desktop\GitHub\CalcApp\CalcApp\obj\Debug\CalcApp.csprojAssemblyReference.cache
+C:\Users\Giro\Desktop\GitHub\CalcApp\CalcApp\obj\Debug\CalcApp.Form1.resources
+C:\Users\Giro\Desktop\GitHub\CalcApp\CalcApp\obj\Debug\CalcApp.Form2.resources
+C:\Users\Giro\Desktop\GitHub\CalcApp\CalcApp\obj\Debug\CalcApp.Properties.Resources.resources
+C:\Users\Giro\Desktop\GitHub\CalcApp\CalcApp\obj\Debug\CalcApp.csproj.GenerateResource.cache
+C:\Users\Giro\Desktop\GitHub\CalcApp\CalcApp\obj\Debug\CalcApp.csproj.CoreCompileInputs.cache
+C:\Users\Giro\Desktop\GitHub\CalcApp\CalcApp\obj\Debug\CalcApp.exe
+C:\Users\Giro\Desktop\GitHub\CalcApp\CalcApp\obj\Debug\CalcApp.pdb

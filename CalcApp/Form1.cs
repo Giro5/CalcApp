@@ -375,7 +375,9 @@ namespace CalcApp
                             CountRightBrackets++;//счетчик правых скобок
                     if (CountLeftBrackets > CountRightBrackets)
                         text = text + new String(')', CountLeftBrackets - CountRightBrackets);//выравнивание скобок
+                    MessageBox.Show(text);
                     for (int loop = 0; loop < CountLeftBrackets; loop++)//решение всех собок
+                    //while(text.Contains("(m"))
                     {
                         for (int i = 0; i < text.Length; i++) //поиск последней левой скобки
                             if (text[i] == '(')
@@ -386,8 +388,18 @@ namespace CalcApp
                                 iend = j;
                                 break;
                             }
+                        //while (iend < ibegin)
+                        //    for (int j = iend + 1; j < text.Length; j++)
+                        //        if (text[j] == ')')
+                        //        {
+                        //            iend = j;
+                        //            break;
+                        //        }
                         oldiend = iend;//сохранение индекса для выхода из рекурсии
                         string tmp = text;
+                        //
+                        //code of shit
+                        //
                         if (ibegin > 0 && text[ibegin - 1] != ' ')//получаем функцию
                         {
                             for (int i = ibegin - 1; i >= 0 && text[i] != ' '; i--)
@@ -398,13 +410,14 @@ namespace CalcApp
                             if (iend != text.Length - 1)
                                 tmp = text.Remove(iend + 1);
                             tmp = tmp.Remove(0, ibegin);
+                            MessageBox.Show(tmp + "| tmp");
                             SolutionFunc(tmp);//и отправляем ее на решение
                         }
                         else//получаем строку внитри скобок
                         {
                             if (oldiend <= text.Length - 1)
                                 tmp = text.Remove(oldiend);
-                            if(tmp[0] == '(')
+                            if (tmp[0] == '(')
                                 tmp = tmp.Remove(0, ibegin + 1);
                             Solution(tmp);//и отправляем ее на решение(рекурсия)
                         }
@@ -658,32 +671,37 @@ namespace CalcApp
 
         private void buttonLeftBracket_Click(object sender, EventArgs e)
         {//открытие скобок
-            if (textBox2.Text != "")//если поле с уравнениями не пустое
+            if (CountBrackets <= 25)
             {
-                if (textBox2.Text.Last() == mul || textBox2.Text.Last() == plus || textBox2.Text.Last() == minus || textBox2.Text.Last() == dev
-               || textBox2.Text.Last() == 'd' || textBox2.Text.Last() == '^' || textBox2.Text.Last() == 't')
+                if (textBox2.Text != "")//если поле с уравнениями не пустое
                 {
-                    if (CountBrackets <= 25)
-                    {//если есть операция - вставки скобки
+                    if (textBox2.Text.Last() == mul || textBox2.Text.Last() == plus || textBox2.Text.Last() == minus || textBox2.Text.Last() == dev
+                   || textBox2.Text.Last() == 'd' || textBox2.Text.Last() == '^' || textBox2.Text.Last() == 't')
+                    {
+                        //если есть операция - вставки скобки
                         textBox2.Text += " (";
                         CountBrackets++;
                     }
+                    else if (textBox2.Text.Last() == '(')
+                    {
+                        {//если есть bracket - вставки скобки
+                            textBox2.Text += " (";
+                            CountBrackets++;
+                        }
+                    }
+                    else//значит было решение без операций
+                    {//очистка поля и вставка скобки
+                        textBox2.Text = "";
+                        buttonLeftBracket.PerformClick();
+                        CountBrackets = 1;
+                    }
                 }
-                else//значит было решение без операций
-                {//очистка поля и вставка скобки
-                    textBox2.Text = "";
-                    buttonLeftBracket.PerformClick();
-                }
-            }
-            else //ставим скобку
-            {
-                if (CountBrackets <= 25)
+                else //ставим скобку
                 {
                     textBox2.Text += " (";
                     CountBrackets++;
                 }
             }
-
         }
 
         private void buttonRightBracket_Click(object sender, EventArgs e)
@@ -702,6 +720,8 @@ namespace CalcApp
                 {
                     if (textBox2.Text.Contains("(") && textBox2.Text[textBox2.Text.Length - 1] == '(')
                         textBox2.Text += textBox1.Text + ") ";
+                    else if (textBox2.Text.Last() == ' ')
+                        textBox2.Text = textBox2.Text.Remove(textBox2.Text.Length - 1) + ") ";
                     else
                         textBox2.Text += " " + textBox1.Text + ") ";
                     Solution(textBox2.Text);
@@ -1288,6 +1308,26 @@ namespace CalcApp
                 textBox1.Text = tmp;
             }
             ChangeSizeForm();
+        }
+
+        private void buttonMenu_Click(object sender, EventArgs e)
+        {
+            if (menuStrip1.Visible == false)
+                menuStrip1.Visible = true;
+            else
+                menuStrip1.Visible = false;
+        }
+
+        private void buttonMenuChange_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem b = (ToolStripMenuItem)sender;
+            labelMode.Text = b.Text;
+            menuStrip1.Visible = false;
+        }
+
+        private void menuStrip1_MouseLeave(object sender, EventArgs e)
+        {
+            menuStrip1.Visible = false;
         }
 
         private void label1_MouseHover(object sender, EventArgs e)
