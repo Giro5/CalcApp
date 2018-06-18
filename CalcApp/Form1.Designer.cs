@@ -328,6 +328,7 @@ namespace CalcApp
             this.buttonPlus.Name = "buttonPlus";
             this.buttonPlus.Size = new System.Drawing.Size(69, 44);
             this.buttonPlus.TabIndex = 13;
+            this.buttonPlus.Tag = "";
             this.buttonPlus.Text = "+";
             this.buttonPlus.UseVisualStyleBackColor = false;
             this.buttonPlus.Click += new System.EventHandler(this.OperatingSymbols_Click);
