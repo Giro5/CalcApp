@@ -17,8 +17,8 @@ namespace CalcApp
             InitializeComponent();
         }
 
-        public const string Version = "1.0.1", //версия
-            LastUpdate = "LastUpdate:\n· Added many comments in the code";//комментарии к версии
+        public const string Version = "1.0.2", //версия
+            LastUpdate = "LastUpdate:\n· A little change in a SolutionFunc case dms";//комментарии к версии
 
         double Result { get; set; } = 0;//для результата решения
         double Digit { get; set; } = 0;//первое число для нахождения ответа
@@ -63,6 +63,11 @@ namespace CalcApp
                 Screen.PrimaryScreen.Bounds.Size.Width < 1920) //проверка на разрешение монитора 
             {
                 //если да, то возвращает минимальный размер формы
+                Width = MinimumSize.Width;
+                Height = MinimumSize.Height;
+            }
+            else
+            {
                 Width = MinimumSize.Width;
                 Height = MinimumSize.Height;
             }
@@ -1154,22 +1159,17 @@ namespace CalcApp
                     Result -= Digit;
                     Result = Digit + Result * 100 / 60;
                     break;
-                case "e^"://возведение в экспаненту
-                    Result = Math.Exp(Result);
-                    break;
                 case "dms": //conversion to degrees
                     Digit = Math.Truncate(Result);
                     Result -= Digit;
-                    string temp = Result.ToString();
-                    for (int i = 2; i < temp.Length; i += 2)
-                    {
-                        if (temp.Length - i > 1)
-                            Number = Math.Round(Convert.ToDouble(Result.ToString()[i] + Result.ToString()[i + 1]) * 60 / 100);
-                        else
-                            Number = Math.Round(Convert.ToDouble(Result.ToString()[i] + "0") * 60 / 100);
-                        Digit += Number / Math.Pow(10, i);
-                    }
-                    Result = Digit;
+                    string temp = Result.ToString(), temp1 = temp.Remove(3);
+                    double tmp1 = Convert.ToDouble(temp), tmp2 = Convert.ToDouble(temp1), tmp3 = tmp1 - tmp2;
+                    tmp2 *= 0.6;
+                    tmp3 *= 0.36;
+                    Result = Digit + tmp2 + tmp3;
+                    break;
+                case "e^"://возведение в экспаненту
+                    Result = Math.Exp(Result);
                     break;
                     //beginning arc trigonometry func
                 case "sinᵣˉ¹":
