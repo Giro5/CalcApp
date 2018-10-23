@@ -75,6 +75,8 @@ namespace CalcApp
             this.label1 = new System.Windows.Forms.Label();
             this.panelTop = new System.Windows.Forms.Panel();
             this.buttonMinimize = new System.Windows.Forms.Button();
+            this.buttonMaximaze = new System.Windows.Forms.Button();
+            this.buttonEscape = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,6 +84,8 @@ namespace CalcApp
             this.textBox2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelMode = new System.Windows.Forms.Label();
+            this.buttonHistory = new System.Windows.Forms.Button();
+            this.buttonMenu = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonHYP = new System.Windows.Forms.Button();
@@ -92,10 +96,6 @@ namespace CalcApp
             this.cgjhghjToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.baseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.scientificToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonHistory = new System.Windows.Forms.Button();
-            this.buttonMenu = new System.Windows.Forms.Button();
-            this.buttonMaximaze = new System.Windows.Forms.Button();
-            this.buttonEscape = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelTop.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -979,6 +979,36 @@ namespace CalcApp
             this.buttonMinimize.UseVisualStyleBackColor = true;
             this.buttonMinimize.Click += new System.EventHandler(this.buttonMinimize_Click);
             // 
+            // buttonMaximaze
+            // 
+            this.buttonMaximaze.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonMaximaze.FlatAppearance.BorderSize = 0;
+            this.buttonMaximaze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMaximaze.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonMaximaze.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonMaximaze.Image = ((System.Drawing.Image)(resources.GetObject("buttonMaximaze.Image")));
+            this.buttonMaximaze.Location = new System.Drawing.Point(281, 0);
+            this.buttonMaximaze.Name = "buttonMaximaze";
+            this.buttonMaximaze.Size = new System.Drawing.Size(30, 30);
+            this.buttonMaximaze.TabIndex = 27;
+            this.buttonMaximaze.UseVisualStyleBackColor = true;
+            this.buttonMaximaze.Click += new System.EventHandler(this.buttonMaximaze_Click);
+            // 
+            // buttonEscape
+            // 
+            this.buttonEscape.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonEscape.FlatAppearance.BorderSize = 0;
+            this.buttonEscape.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEscape.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonEscape.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonEscape.Image = ((System.Drawing.Image)(resources.GetObject("buttonEscape.Image")));
+            this.buttonEscape.Location = new System.Drawing.Point(311, 0);
+            this.buttonEscape.Name = "buttonEscape";
+            this.buttonEscape.Size = new System.Drawing.Size(30, 30);
+            this.buttonEscape.TabIndex = 25;
+            this.buttonEscape.UseVisualStyleBackColor = true;
+            this.buttonEscape.Click += new System.EventHandler(this.buttonEscape_Click);
+            // 
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1073,6 +1103,36 @@ namespace CalcApp
             this.labelMode.Size = new System.Drawing.Size(111, 33);
             this.labelMode.TabIndex = 2;
             this.labelMode.Text = "Scientific";
+            // 
+            // buttonHistory
+            // 
+            this.buttonHistory.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonHistory.Enabled = false;
+            this.buttonHistory.FlatAppearance.BorderSize = 0;
+            this.buttonHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonHistory.Image = global::CalcApp.Properties.Resources.icons8_Past_30px;
+            this.buttonHistory.Location = new System.Drawing.Point(301, 0);
+            this.buttonHistory.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonHistory.Name = "buttonHistory";
+            this.buttonHistory.Size = new System.Drawing.Size(40, 40);
+            this.buttonHistory.TabIndex = 1;
+            this.buttonHistory.UseVisualStyleBackColor = true;
+            this.buttonHistory.Visible = false;
+            // 
+            // buttonMenu
+            // 
+            this.buttonMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonMenu.FlatAppearance.BorderSize = 0;
+            this.buttonMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMenu.Font = new System.Drawing.Font("Times New Roman", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonMenu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonMenu.Image = global::CalcApp.Properties.Resources.icons8_Menu_30px;
+            this.buttonMenu.Location = new System.Drawing.Point(0, 0);
+            this.buttonMenu.Name = "buttonMenu";
+            this.buttonMenu.Size = new System.Drawing.Size(40, 40);
+            this.buttonMenu.TabIndex = 0;
+            this.buttonMenu.UseVisualStyleBackColor = true;
+            this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
             // 
             // toolTip1
             // 
@@ -1217,66 +1277,6 @@ namespace CalcApp
             this.scientificToolStripMenuItem.Text = "scientific";
             this.scientificToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.scientificToolStripMenuItem.Click += new System.EventHandler(this.buttonMenuChange_Click);
-            // 
-            // buttonHistory
-            // 
-            this.buttonHistory.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonHistory.Enabled = false;
-            this.buttonHistory.FlatAppearance.BorderSize = 0;
-            this.buttonHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHistory.Image = global::CalcApp.Properties.Resources.icons8_Past_30px;
-            this.buttonHistory.Location = new System.Drawing.Point(301, 0);
-            this.buttonHistory.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonHistory.Name = "buttonHistory";
-            this.buttonHistory.Size = new System.Drawing.Size(40, 40);
-            this.buttonHistory.TabIndex = 1;
-            this.buttonHistory.UseVisualStyleBackColor = true;
-            this.buttonHistory.Visible = false;
-            // 
-            // buttonMenu
-            // 
-            this.buttonMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.buttonMenu.FlatAppearance.BorderSize = 0;
-            this.buttonMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMenu.Font = new System.Drawing.Font("Times New Roman", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonMenu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonMenu.Image = global::CalcApp.Properties.Resources.icons8_Menu_30px;
-            this.buttonMenu.Location = new System.Drawing.Point(0, 0);
-            this.buttonMenu.Name = "buttonMenu";
-            this.buttonMenu.Size = new System.Drawing.Size(40, 40);
-            this.buttonMenu.TabIndex = 0;
-            this.buttonMenu.UseVisualStyleBackColor = true;
-            this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
-            // 
-            // buttonMaximaze
-            // 
-            this.buttonMaximaze.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonMaximaze.FlatAppearance.BorderSize = 0;
-            this.buttonMaximaze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMaximaze.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonMaximaze.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonMaximaze.Image = ((System.Drawing.Image)(resources.GetObject("buttonMaximaze.Image")));
-            this.buttonMaximaze.Location = new System.Drawing.Point(281, 0);
-            this.buttonMaximaze.Name = "buttonMaximaze";
-            this.buttonMaximaze.Size = new System.Drawing.Size(30, 30);
-            this.buttonMaximaze.TabIndex = 27;
-            this.buttonMaximaze.UseVisualStyleBackColor = true;
-            this.buttonMaximaze.Click += new System.EventHandler(this.buttonMaximaze_Click);
-            // 
-            // buttonEscape
-            // 
-            this.buttonEscape.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonEscape.FlatAppearance.BorderSize = 0;
-            this.buttonEscape.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEscape.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonEscape.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonEscape.Image = ((System.Drawing.Image)(resources.GetObject("buttonEscape.Image")));
-            this.buttonEscape.Location = new System.Drawing.Point(311, 0);
-            this.buttonEscape.Name = "buttonEscape";
-            this.buttonEscape.Size = new System.Drawing.Size(30, 30);
-            this.buttonEscape.TabIndex = 25;
-            this.buttonEscape.UseVisualStyleBackColor = true;
-            this.buttonEscape.Click += new System.EventHandler(this.buttonEscape_Click);
             // 
             // Form1
             // 

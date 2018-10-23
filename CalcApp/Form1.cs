@@ -354,7 +354,6 @@ namespace CalcApp
 
         private void Solution(string text)
         {
-
             if (text.Length > 2 && (text[text.Length - 1] == mul || text[text.Length - 1] == plus || text[text.Length - 1] == minus || text[text.Length - 1] == dev || text[text.Length - 1] == '^'))
                 text = text.Remove(text.Length - 2);
             else if (text.Length > 2 && text[text.Length - 1] == 'd')
@@ -410,9 +409,9 @@ namespace CalcApp
                         {
                             for (int i = ibegin - 1; i >= 0 && text[i] != ' '; i--)
                                 ibegin--;
-                            for (int j = ibegin + 1; j < text.Length; j++)
-                                if (text[j] == ')')
-                                    iend = j;
+                            //for (int j = ibegin + 1; j < text.Length; j++)
+                            //    if (text[j] == ')')
+                            //        iend = j;
                             if (iend != text.Length - 1)
                                 tmp = text.Remove(iend + 1);
                             tmp = tmp.Remove(0, ibegin);
