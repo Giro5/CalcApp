@@ -32,6 +32,7 @@ namespace CalcApp
         string DRG { get; set; } = "DEG";//режим решения тригоном. фун
 
         string Mul { get; } = "×";//константа строки умножения
+        //string Mul { get { return mul.ToString(); } }
         string Plus { get; } = "+";//константа строки плюса
         string Minus { get; } = "-";//константа строки минуса
         string Dev { get; } = "÷";//константа строки деления
@@ -59,7 +60,7 @@ namespace CalcApp
             label1.Text += " " + Version; //приписка версии к названию программы
             ChangeSizeForm(); //нормирование ширины главного textbox'а
             textBox2.Text = ""; //опустошение textbox'а с уравнением
-            if(Screen.PrimaryScreen.Bounds.Size.Height < 1080 &&
+            if (Screen.PrimaryScreen.Bounds.Size.Height < 1080 &&
                 Screen.PrimaryScreen.Bounds.Size.Width < 1920) //проверка на разрешение монитора 
             {
                 //если да, то возвращает минимальный размер формы
@@ -379,7 +380,7 @@ namespace CalcApp
                         if (text[i] == ')')
                             CountRightBrackets++;//счетчик правых скобок
                     if (CountLeftBrackets > CountRightBrackets)
-                        text = text + new String(')', CountLeftBrackets - CountRightBrackets);//выравнивание скобок
+                        text = text + new string(')', CountLeftBrackets - CountRightBrackets);//выравнивание скобок
                     MessageBox.Show(text);
                     for (int loop = 0; loop < CountLeftBrackets; loop++)//решение всех собок
                     //while(text.Contains("(m"))
@@ -1073,6 +1074,8 @@ namespace CalcApp
                 case "fact"://факториал
                     for (double i = Result - 1.0; i > 1.0; i--)
                         Result *= i;
+                    if (Result == 0)
+                        Result = 1;
                     break;
                 case "10^"://10 в вашей степени (много не ставить, а то даже кальк винды ругается)
                     Result = Math.Pow(10.0, Result);

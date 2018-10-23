@@ -75,8 +75,6 @@ namespace CalcApp
             this.label1 = new System.Windows.Forms.Label();
             this.panelTop = new System.Windows.Forms.Panel();
             this.buttonMinimize = new System.Windows.Forms.Button();
-            this.buttonMaximaze = new System.Windows.Forms.Button();
-            this.buttonEscape = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,8 +82,6 @@ namespace CalcApp
             this.textBox2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelMode = new System.Windows.Forms.Label();
-            this.buttonHistory = new System.Windows.Forms.Button();
-            this.buttonMenu = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonHYP = new System.Windows.Forms.Button();
@@ -96,6 +92,10 @@ namespace CalcApp
             this.cgjhghjToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.baseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.scientificToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonHistory = new System.Windows.Forms.Button();
+            this.buttonMenu = new System.Windows.Forms.Button();
+            this.buttonMaximaze = new System.Windows.Forms.Button();
+            this.buttonEscape = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelTop.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -114,10 +114,10 @@ namespace CalcApp
             this.button0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button0.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button0.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button0.Location = new System.Drawing.Point(4, 352);
+            this.button0.Location = new System.Drawing.Point(4, 317);
             this.button0.Margin = new System.Windows.Forms.Padding(4, 2, 2, 4);
             this.button0.Name = "button0";
-            this.button0.Size = new System.Drawing.Size(67, 44);
+            this.button0.Size = new System.Drawing.Size(62, 43);
             this.button0.TabIndex = 1;
             this.button0.Text = "0";
             this.button0.UseVisualStyleBackColor = false;
@@ -133,10 +133,10 @@ namespace CalcApp
             this.buttonPlusAndMinus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPlusAndMinus.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonPlusAndMinus.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonPlusAndMinus.Location = new System.Drawing.Point(75, 352);
+            this.buttonPlusAndMinus.Location = new System.Drawing.Point(70, 317);
             this.buttonPlusAndMinus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 4);
             this.buttonPlusAndMinus.Name = "buttonPlusAndMinus";
-            this.buttonPlusAndMinus.Size = new System.Drawing.Size(69, 44);
+            this.buttonPlusAndMinus.Size = new System.Drawing.Size(64, 43);
             this.buttonPlusAndMinus.TabIndex = 2;
             this.buttonPlusAndMinus.Text = "+/-";
             this.buttonPlusAndMinus.UseVisualStyleBackColor = false;
@@ -152,10 +152,10 @@ namespace CalcApp
             this.buttonDot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDot.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonDot.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonDot.Location = new System.Drawing.Point(148, 352);
+            this.buttonDot.Location = new System.Drawing.Point(138, 317);
             this.buttonDot.Margin = new System.Windows.Forms.Padding(2, 2, 2, 4);
             this.buttonDot.Name = "buttonDot";
-            this.buttonDot.Size = new System.Drawing.Size(69, 44);
+            this.buttonDot.Size = new System.Drawing.Size(64, 43);
             this.buttonDot.TabIndex = 3;
             this.buttonDot.Text = ",";
             this.buttonDot.UseVisualStyleBackColor = false;
@@ -171,10 +171,10 @@ namespace CalcApp
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(75, 302);
+            this.button2.Location = new System.Drawing.Point(70, 272);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(69, 46);
+            this.button2.Size = new System.Drawing.Size(64, 41);
             this.button2.TabIndex = 5;
             this.button2.Text = "2";
             this.button2.UseVisualStyleBackColor = false;
@@ -190,10 +190,10 @@ namespace CalcApp
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(148, 302);
+            this.button3.Location = new System.Drawing.Point(138, 272);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(69, 46);
+            this.button3.Size = new System.Drawing.Size(64, 41);
             this.button3.TabIndex = 6;
             this.button3.Text = "3";
             this.button3.UseVisualStyleBackColor = false;
@@ -209,10 +209,10 @@ namespace CalcApp
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Location = new System.Drawing.Point(4, 252);
+            this.button4.Location = new System.Drawing.Point(4, 227);
             this.button4.Margin = new System.Windows.Forms.Padding(4, 2, 2, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(67, 46);
+            this.button4.Size = new System.Drawing.Size(62, 41);
             this.button4.TabIndex = 7;
             this.button4.Text = "4";
             this.button4.UseVisualStyleBackColor = false;
@@ -228,10 +228,10 @@ namespace CalcApp
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button5.Location = new System.Drawing.Point(75, 252);
+            this.button5.Location = new System.Drawing.Point(70, 227);
             this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(69, 46);
+            this.button5.Size = new System.Drawing.Size(64, 41);
             this.button5.TabIndex = 8;
             this.button5.Text = "5";
             this.button5.UseVisualStyleBackColor = false;
@@ -247,10 +247,10 @@ namespace CalcApp
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button6.Location = new System.Drawing.Point(148, 252);
+            this.button6.Location = new System.Drawing.Point(138, 227);
             this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(69, 46);
+            this.button6.Size = new System.Drawing.Size(64, 41);
             this.button6.TabIndex = 9;
             this.button6.Text = "6";
             this.button6.UseVisualStyleBackColor = false;
@@ -266,10 +266,10 @@ namespace CalcApp
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button7.Location = new System.Drawing.Point(4, 202);
+            this.button7.Location = new System.Drawing.Point(4, 182);
             this.button7.Margin = new System.Windows.Forms.Padding(4, 2, 2, 2);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(67, 46);
+            this.button7.Size = new System.Drawing.Size(62, 41);
             this.button7.TabIndex = 10;
             this.button7.Text = "7";
             this.button7.UseVisualStyleBackColor = false;
@@ -285,10 +285,10 @@ namespace CalcApp
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button8.Location = new System.Drawing.Point(75, 202);
+            this.button8.Location = new System.Drawing.Point(70, 182);
             this.button8.Margin = new System.Windows.Forms.Padding(2);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(69, 46);
+            this.button8.Size = new System.Drawing.Size(64, 41);
             this.button8.TabIndex = 11;
             this.button8.Text = "8";
             this.button8.UseVisualStyleBackColor = false;
@@ -304,10 +304,10 @@ namespace CalcApp
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button9.Location = new System.Drawing.Point(148, 202);
+            this.button9.Location = new System.Drawing.Point(138, 182);
             this.button9.Margin = new System.Windows.Forms.Padding(2);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(69, 46);
+            this.button9.Size = new System.Drawing.Size(64, 41);
             this.button9.TabIndex = 12;
             this.button9.Text = "9";
             this.button9.UseVisualStyleBackColor = false;
@@ -323,10 +323,10 @@ namespace CalcApp
             this.buttonPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPlus.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonPlus.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonPlus.Location = new System.Drawing.Point(221, 352);
+            this.buttonPlus.Location = new System.Drawing.Point(206, 317);
             this.buttonPlus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 4);
             this.buttonPlus.Name = "buttonPlus";
-            this.buttonPlus.Size = new System.Drawing.Size(69, 44);
+            this.buttonPlus.Size = new System.Drawing.Size(64, 43);
             this.buttonPlus.TabIndex = 13;
             this.buttonPlus.Tag = "";
             this.buttonPlus.Text = "+";
@@ -343,10 +343,10 @@ namespace CalcApp
             this.buttonBackspace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBackspace.Font = new System.Drawing.Font("Wingdings", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.buttonBackspace.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonBackspace.Location = new System.Drawing.Point(221, 2);
+            this.buttonBackspace.Location = new System.Drawing.Point(206, 2);
             this.buttonBackspace.Margin = new System.Windows.Forms.Padding(2);
             this.buttonBackspace.Name = "buttonBackspace";
-            this.buttonBackspace.Size = new System.Drawing.Size(69, 46);
+            this.buttonBackspace.Size = new System.Drawing.Size(64, 41);
             this.buttonBackspace.TabIndex = 20;
             this.buttonBackspace.Text = "Х";
             this.buttonBackspace.UseVisualStyleBackColor = false;
@@ -362,10 +362,10 @@ namespace CalcApp
             this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCancel.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonCancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonCancel.Location = new System.Drawing.Point(294, 2);
+            this.buttonCancel.Location = new System.Drawing.Point(274, 2);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(2, 2, 4, 2);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(70, 46);
+            this.buttonCancel.Size = new System.Drawing.Size(63, 41);
             this.buttonCancel.TabIndex = 21;
             this.buttonCancel.Text = "C";
             this.buttonCancel.UseVisualStyleBackColor = false;
@@ -434,7 +434,7 @@ namespace CalcApp
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(368, 400);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(341, 364);
             this.tableLayoutPanel1.TabIndex = 24;
             // 
             // buttonMplus
@@ -448,10 +448,10 @@ namespace CalcApp
             this.buttonMplus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMplus.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonMplus.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonMplus.Location = new System.Drawing.Point(294, 302);
+            this.buttonMplus.Location = new System.Drawing.Point(274, 272);
             this.buttonMplus.Margin = new System.Windows.Forms.Padding(2, 2, 4, 2);
             this.buttonMplus.Name = "buttonMplus";
-            this.buttonMplus.Size = new System.Drawing.Size(70, 46);
+            this.buttonMplus.Size = new System.Drawing.Size(63, 41);
             this.buttonMplus.TabIndex = 37;
             this.buttonMplus.Text = "M+";
             this.buttonMplus.UseVisualStyleBackColor = false;
@@ -467,10 +467,10 @@ namespace CalcApp
             this.buttonMR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMR.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonMR.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonMR.Location = new System.Drawing.Point(294, 202);
+            this.buttonMR.Location = new System.Drawing.Point(274, 182);
             this.buttonMR.Margin = new System.Windows.Forms.Padding(2, 2, 4, 2);
             this.buttonMR.Name = "buttonMR";
-            this.buttonMR.Size = new System.Drawing.Size(70, 46);
+            this.buttonMR.Size = new System.Drawing.Size(63, 41);
             this.buttonMR.TabIndex = 27;
             this.buttonMR.Text = "MR";
             this.buttonMR.UseVisualStyleBackColor = false;
@@ -485,10 +485,10 @@ namespace CalcApp
             this.buttonDivide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDivide.Font = new System.Drawing.Font("Century", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonDivide.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonDivide.Location = new System.Drawing.Point(221, 252);
+            this.buttonDivide.Location = new System.Drawing.Point(206, 227);
             this.buttonDivide.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDivide.Name = "buttonDivide";
-            this.buttonDivide.Size = new System.Drawing.Size(69, 46);
+            this.buttonDivide.Size = new System.Drawing.Size(64, 41);
             this.buttonDivide.TabIndex = 16;
             this.buttonDivide.Text = "÷";
             this.buttonDivide.UseVisualStyleBackColor = false;
@@ -504,10 +504,10 @@ namespace CalcApp
             this.buttonMultiply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMultiply.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonMultiply.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonMultiply.Location = new System.Drawing.Point(221, 202);
+            this.buttonMultiply.Location = new System.Drawing.Point(206, 182);
             this.buttonMultiply.Margin = new System.Windows.Forms.Padding(2);
             this.buttonMultiply.Name = "buttonMultiply";
-            this.buttonMultiply.Size = new System.Drawing.Size(69, 46);
+            this.buttonMultiply.Size = new System.Drawing.Size(64, 41);
             this.buttonMultiply.TabIndex = 15;
             this.buttonMultiply.Text = "×";
             this.buttonMultiply.UseVisualStyleBackColor = false;
@@ -523,10 +523,10 @@ namespace CalcApp
             this.buttonMinus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMinus.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonMinus.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonMinus.Location = new System.Drawing.Point(221, 302);
+            this.buttonMinus.Location = new System.Drawing.Point(206, 272);
             this.buttonMinus.Margin = new System.Windows.Forms.Padding(2);
             this.buttonMinus.Name = "buttonMinus";
-            this.buttonMinus.Size = new System.Drawing.Size(69, 46);
+            this.buttonMinus.Size = new System.Drawing.Size(64, 41);
             this.buttonMinus.TabIndex = 14;
             this.buttonMinus.Text = "-";
             this.buttonMinus.UseVisualStyleBackColor = false;
@@ -542,10 +542,10 @@ namespace CalcApp
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(4, 302);
+            this.button1.Location = new System.Drawing.Point(4, 272);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(67, 46);
+            this.button1.Size = new System.Drawing.Size(62, 41);
             this.button1.TabIndex = 4;
             this.button1.Text = "1";
             this.button1.UseVisualStyleBackColor = false;
@@ -561,10 +561,10 @@ namespace CalcApp
             this.buttonSqr_And_Cube.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSqr_And_Cube.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonSqr_And_Cube.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonSqr_And_Cube.Location = new System.Drawing.Point(148, 152);
+            this.buttonSqr_And_Cube.Location = new System.Drawing.Point(138, 137);
             this.buttonSqr_And_Cube.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSqr_And_Cube.Name = "buttonSqr_And_Cube";
-            this.buttonSqr_And_Cube.Size = new System.Drawing.Size(69, 46);
+            this.buttonSqr_And_Cube.Size = new System.Drawing.Size(64, 41);
             this.buttonSqr_And_Cube.TabIndex = 21;
             this.buttonSqr_And_Cube.Text = "x²";
             this.buttonSqr_And_Cube.UseVisualStyleBackColor = false;
@@ -580,10 +580,10 @@ namespace CalcApp
             this.buttonSqrt_And_1divideX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSqrt_And_1divideX.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSqrt_And_1divideX.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonSqrt_And_1divideX.Location = new System.Drawing.Point(75, 152);
+            this.buttonSqrt_And_1divideX.Location = new System.Drawing.Point(70, 137);
             this.buttonSqrt_And_1divideX.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSqrt_And_1divideX.Name = "buttonSqrt_And_1divideX";
-            this.buttonSqrt_And_1divideX.Size = new System.Drawing.Size(69, 46);
+            this.buttonSqrt_And_1divideX.Size = new System.Drawing.Size(64, 41);
             this.buttonSqrt_And_1divideX.TabIndex = 20;
             this.buttonSqrt_And_1divideX.Text = "√";
             this.buttonSqrt_And_1divideX.UseVisualStyleBackColor = false;
@@ -599,10 +599,10 @@ namespace CalcApp
             this.buttonXdegreeY_And_YrootX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonXdegreeY_And_YrootX.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonXdegreeY_And_YrootX.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonXdegreeY_And_YrootX.Location = new System.Drawing.Point(4, 152);
+            this.buttonXdegreeY_And_YrootX.Location = new System.Drawing.Point(4, 137);
             this.buttonXdegreeY_And_YrootX.Margin = new System.Windows.Forms.Padding(4, 2, 2, 2);
             this.buttonXdegreeY_And_YrootX.Name = "buttonXdegreeY_And_YrootX";
-            this.buttonXdegreeY_And_YrootX.Size = new System.Drawing.Size(67, 46);
+            this.buttonXdegreeY_And_YrootX.Size = new System.Drawing.Size(62, 41);
             this.buttonXdegreeY_And_YrootX.TabIndex = 19;
             this.buttonXdegreeY_And_YrootX.Text = "xʸ";
             this.buttonXdegreeY_And_YrootX.UseVisualStyleBackColor = false;
@@ -618,10 +618,10 @@ namespace CalcApp
             this.buttonLn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLn.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonLn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonLn.Location = new System.Drawing.Point(294, 102);
+            this.buttonLn.Location = new System.Drawing.Point(274, 92);
             this.buttonLn.Margin = new System.Windows.Forms.Padding(2, 2, 4, 2);
             this.buttonLn.Name = "buttonLn";
-            this.buttonLn.Size = new System.Drawing.Size(70, 46);
+            this.buttonLn.Size = new System.Drawing.Size(63, 41);
             this.buttonLn.TabIndex = 18;
             this.buttonLn.Text = "ln";
             this.buttonLn.UseVisualStyleBackColor = false;
@@ -637,10 +637,10 @@ namespace CalcApp
             this.buttonTan_And_Arctan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTan_And_Arctan.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonTan_And_Arctan.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonTan_And_Arctan.Location = new System.Drawing.Point(148, 102);
+            this.buttonTan_And_Arctan.Location = new System.Drawing.Point(138, 92);
             this.buttonTan_And_Arctan.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTan_And_Arctan.Name = "buttonTan_And_Arctan";
-            this.buttonTan_And_Arctan.Size = new System.Drawing.Size(69, 46);
+            this.buttonTan_And_Arctan.Size = new System.Drawing.Size(64, 41);
             this.buttonTan_And_Arctan.TabIndex = 16;
             this.buttonTan_And_Arctan.Text = "tan";
             this.buttonTan_And_Arctan.UseVisualStyleBackColor = false;
@@ -657,10 +657,10 @@ namespace CalcApp
             this.buttonCos_And_Arccos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCos_And_Arccos.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonCos_And_Arccos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonCos_And_Arccos.Location = new System.Drawing.Point(75, 102);
+            this.buttonCos_And_Arccos.Location = new System.Drawing.Point(70, 92);
             this.buttonCos_And_Arccos.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCos_And_Arccos.Name = "buttonCos_And_Arccos";
-            this.buttonCos_And_Arccos.Size = new System.Drawing.Size(69, 46);
+            this.buttonCos_And_Arccos.Size = new System.Drawing.Size(64, 41);
             this.buttonCos_And_Arccos.TabIndex = 15;
             this.buttonCos_And_Arccos.Text = "cos";
             this.buttonCos_And_Arccos.UseVisualStyleBackColor = false;
@@ -677,10 +677,10 @@ namespace CalcApp
             this.buttonSin_And_Arcsin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSin_And_Arcsin.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonSin_And_Arcsin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonSin_And_Arcsin.Location = new System.Drawing.Point(4, 102);
+            this.buttonSin_And_Arcsin.Location = new System.Drawing.Point(4, 92);
             this.buttonSin_And_Arcsin.Margin = new System.Windows.Forms.Padding(4, 2, 2, 2);
             this.buttonSin_And_Arcsin.Name = "buttonSin_And_Arcsin";
-            this.buttonSin_And_Arcsin.Size = new System.Drawing.Size(67, 46);
+            this.buttonSin_And_Arcsin.Size = new System.Drawing.Size(62, 41);
             this.buttonSin_And_Arcsin.TabIndex = 14;
             this.buttonSin_And_Arcsin.Text = "sin";
             this.buttonSin_And_Arcsin.UseVisualStyleBackColor = false;
@@ -697,10 +697,10 @@ namespace CalcApp
             this.buttonExp_And_dms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExp_And_dms.Font = new System.Drawing.Font("Calibri", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonExp_And_dms.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonExp_And_dms.Location = new System.Drawing.Point(148, 52);
+            this.buttonExp_And_dms.Location = new System.Drawing.Point(138, 47);
             this.buttonExp_And_dms.Margin = new System.Windows.Forms.Padding(2);
             this.buttonExp_And_dms.Name = "buttonExp_And_dms";
-            this.buttonExp_And_dms.Size = new System.Drawing.Size(69, 46);
+            this.buttonExp_And_dms.Size = new System.Drawing.Size(64, 41);
             this.buttonExp_And_dms.TabIndex = 11;
             this.buttonExp_And_dms.Text = "Exp";
             this.buttonExp_And_dms.UseVisualStyleBackColor = false;
@@ -716,10 +716,10 @@ namespace CalcApp
             this.button10degreeX_And_EdegreeX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10degreeX_And_EdegreeX.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button10degreeX_And_EdegreeX.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button10degreeX_And_EdegreeX.Location = new System.Drawing.Point(75, 52);
+            this.button10degreeX_And_EdegreeX.Location = new System.Drawing.Point(70, 47);
             this.button10degreeX_And_EdegreeX.Margin = new System.Windows.Forms.Padding(2);
             this.button10degreeX_And_EdegreeX.Name = "button10degreeX_And_EdegreeX";
-            this.button10degreeX_And_EdegreeX.Size = new System.Drawing.Size(69, 46);
+            this.button10degreeX_And_EdegreeX.Size = new System.Drawing.Size(64, 41);
             this.button10degreeX_And_EdegreeX.TabIndex = 10;
             this.button10degreeX_And_EdegreeX.Text = "10ˣ";
             this.button10degreeX_And_EdegreeX.UseVisualStyleBackColor = false;
@@ -735,10 +735,10 @@ namespace CalcApp
             this.buttonFact_And_deg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFact_And_deg.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonFact_And_deg.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonFact_And_deg.Location = new System.Drawing.Point(4, 52);
+            this.buttonFact_And_deg.Location = new System.Drawing.Point(4, 47);
             this.buttonFact_And_deg.Margin = new System.Windows.Forms.Padding(4, 2, 2, 2);
             this.buttonFact_And_deg.Name = "buttonFact_And_deg";
-            this.buttonFact_And_deg.Size = new System.Drawing.Size(67, 46);
+            this.buttonFact_And_deg.Size = new System.Drawing.Size(62, 41);
             this.buttonFact_And_deg.TabIndex = 9;
             this.buttonFact_And_deg.Text = "n!";
             this.buttonFact_And_deg.UseVisualStyleBackColor = false;
@@ -754,10 +754,10 @@ namespace CalcApp
             this.buttonCE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCE.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonCE.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonCE.Location = new System.Drawing.Point(148, 2);
+            this.buttonCE.Location = new System.Drawing.Point(138, 2);
             this.buttonCE.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCE.Name = "buttonCE";
-            this.buttonCE.Size = new System.Drawing.Size(69, 46);
+            this.buttonCE.Size = new System.Drawing.Size(64, 41);
             this.buttonCE.TabIndex = 6;
             this.buttonCE.Text = "CE";
             this.buttonCE.UseVisualStyleBackColor = false;
@@ -773,10 +773,10 @@ namespace CalcApp
             this.buttonPi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPi.Font = new System.Drawing.Font("Lucida Console", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPi.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonPi.Location = new System.Drawing.Point(75, 2);
+            this.buttonPi.Location = new System.Drawing.Point(70, 2);
             this.buttonPi.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPi.Name = "buttonPi";
-            this.buttonPi.Size = new System.Drawing.Size(69, 46);
+            this.buttonPi.Size = new System.Drawing.Size(64, 41);
             this.buttonPi.TabIndex = 5;
             this.buttonPi.Text = "π";
             this.buttonPi.UseVisualStyleBackColor = false;
@@ -793,10 +793,10 @@ namespace CalcApp
             this.buttonMminus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMminus.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonMminus.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonMminus.Location = new System.Drawing.Point(294, 252);
+            this.buttonMminus.Location = new System.Drawing.Point(274, 227);
             this.buttonMminus.Margin = new System.Windows.Forms.Padding(2, 2, 4, 2);
             this.buttonMminus.Name = "buttonMminus";
-            this.buttonMminus.Size = new System.Drawing.Size(70, 46);
+            this.buttonMminus.Size = new System.Drawing.Size(63, 41);
             this.buttonMminus.TabIndex = 32;
             this.buttonMminus.Text = "M-";
             this.buttonMminus.UseVisualStyleBackColor = false;
@@ -814,7 +814,7 @@ namespace CalcApp
             this.buttonInverse.Location = new System.Drawing.Point(4, 2);
             this.buttonInverse.Margin = new System.Windows.Forms.Padding(4, 2, 2, 2);
             this.buttonInverse.Name = "buttonInverse";
-            this.buttonInverse.Size = new System.Drawing.Size(67, 46);
+            this.buttonInverse.Size = new System.Drawing.Size(62, 41);
             this.buttonInverse.TabIndex = 3;
             this.buttonInverse.Text = "↓";
             this.buttonInverse.UseVisualStyleBackColor = false;
@@ -830,10 +830,10 @@ namespace CalcApp
             this.buttonEquals.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEquals.Font = new System.Drawing.Font("Arial", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonEquals.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonEquals.Location = new System.Drawing.Point(294, 352);
+            this.buttonEquals.Location = new System.Drawing.Point(274, 317);
             this.buttonEquals.Margin = new System.Windows.Forms.Padding(2, 2, 4, 4);
             this.buttonEquals.Name = "buttonEquals";
-            this.buttonEquals.Size = new System.Drawing.Size(70, 44);
+            this.buttonEquals.Size = new System.Drawing.Size(63, 43);
             this.buttonEquals.TabIndex = 17;
             this.buttonEquals.Text = "═";
             this.buttonEquals.UseVisualStyleBackColor = false;
@@ -849,10 +849,10 @@ namespace CalcApp
             this.buttonLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLog.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonLog.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonLog.Location = new System.Drawing.Point(221, 102);
+            this.buttonLog.Location = new System.Drawing.Point(206, 92);
             this.buttonLog.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLog.Name = "buttonLog";
-            this.buttonLog.Size = new System.Drawing.Size(69, 46);
+            this.buttonLog.Size = new System.Drawing.Size(64, 41);
             this.buttonLog.TabIndex = 8;
             this.buttonLog.Text = "log";
             this.buttonLog.UseVisualStyleBackColor = false;
@@ -868,10 +868,10 @@ namespace CalcApp
             this.buttonLeftBracket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLeftBracket.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonLeftBracket.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonLeftBracket.Location = new System.Drawing.Point(221, 52);
+            this.buttonLeftBracket.Location = new System.Drawing.Point(206, 47);
             this.buttonLeftBracket.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLeftBracket.Name = "buttonLeftBracket";
-            this.buttonLeftBracket.Size = new System.Drawing.Size(69, 46);
+            this.buttonLeftBracket.Size = new System.Drawing.Size(64, 41);
             this.buttonLeftBracket.TabIndex = 42;
             this.buttonLeftBracket.Text = "(";
             this.buttonLeftBracket.UseVisualStyleBackColor = false;
@@ -887,10 +887,10 @@ namespace CalcApp
             this.buttonRightBracket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRightBracket.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonRightBracket.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonRightBracket.Location = new System.Drawing.Point(294, 52);
+            this.buttonRightBracket.Location = new System.Drawing.Point(274, 47);
             this.buttonRightBracket.Margin = new System.Windows.Forms.Padding(2, 2, 4, 2);
             this.buttonRightBracket.Name = "buttonRightBracket";
-            this.buttonRightBracket.Size = new System.Drawing.Size(70, 46);
+            this.buttonRightBracket.Size = new System.Drawing.Size(63, 41);
             this.buttonRightBracket.TabIndex = 22;
             this.buttonRightBracket.Text = ")";
             this.buttonRightBracket.UseVisualStyleBackColor = false;
@@ -907,10 +907,10 @@ namespace CalcApp
             this.buttonMS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMS.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonMS.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonMS.Location = new System.Drawing.Point(294, 152);
+            this.buttonMS.Location = new System.Drawing.Point(274, 137);
             this.buttonMS.Margin = new System.Windows.Forms.Padding(2, 2, 4, 2);
             this.buttonMS.Name = "buttonMS";
-            this.buttonMS.Size = new System.Drawing.Size(70, 46);
+            this.buttonMS.Size = new System.Drawing.Size(63, 41);
             this.buttonMS.TabIndex = 7;
             this.buttonMS.Text = "MS";
             this.buttonMS.UseVisualStyleBackColor = false;
@@ -925,10 +925,10 @@ namespace CalcApp
             this.buttonMod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMod.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonMod.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonMod.Location = new System.Drawing.Point(221, 152);
+            this.buttonMod.Location = new System.Drawing.Point(206, 137);
             this.buttonMod.Margin = new System.Windows.Forms.Padding(2);
             this.buttonMod.Name = "buttonMod";
-            this.buttonMod.Size = new System.Drawing.Size(69, 46);
+            this.buttonMod.Size = new System.Drawing.Size(64, 41);
             this.buttonMod.TabIndex = 13;
             this.buttonMod.Text = "Mod";
             this.buttonMod.UseVisualStyleBackColor = false;
@@ -939,7 +939,7 @@ namespace CalcApp
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("RUSBoycott", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(3, 7);
+            this.label1.Location = new System.Drawing.Point(3, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 23);
             this.label1.TabIndex = 26;
@@ -958,7 +958,7 @@ namespace CalcApp
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Margin = new System.Windows.Forms.Padding(0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(368, 30);
+            this.panelTop.Size = new System.Drawing.Size(341, 30);
             this.panelTop.TabIndex = 27;
             this.panelTop.DoubleClick += new System.EventHandler(this.buttonMaximaze_Click);
             this.panelTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseDown);
@@ -971,43 +971,13 @@ namespace CalcApp
             this.buttonMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMinimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonMinimize.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonMinimize.Location = new System.Drawing.Point(278, 0);
+            this.buttonMinimize.Location = new System.Drawing.Point(251, 0);
             this.buttonMinimize.Name = "buttonMinimize";
             this.buttonMinimize.Size = new System.Drawing.Size(30, 30);
             this.buttonMinimize.TabIndex = 28;
             this.buttonMinimize.Text = "–";
             this.buttonMinimize.UseVisualStyleBackColor = true;
             this.buttonMinimize.Click += new System.EventHandler(this.buttonMinimize_Click);
-            // 
-            // buttonMaximaze
-            // 
-            this.buttonMaximaze.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonMaximaze.FlatAppearance.BorderSize = 0;
-            this.buttonMaximaze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMaximaze.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonMaximaze.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonMaximaze.Image = ((System.Drawing.Image)(resources.GetObject("buttonMaximaze.Image")));
-            this.buttonMaximaze.Location = new System.Drawing.Point(308, 0);
-            this.buttonMaximaze.Name = "buttonMaximaze";
-            this.buttonMaximaze.Size = new System.Drawing.Size(30, 30);
-            this.buttonMaximaze.TabIndex = 27;
-            this.buttonMaximaze.UseVisualStyleBackColor = true;
-            this.buttonMaximaze.Click += new System.EventHandler(this.buttonMaximaze_Click);
-            // 
-            // buttonEscape
-            // 
-            this.buttonEscape.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonEscape.FlatAppearance.BorderSize = 0;
-            this.buttonEscape.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEscape.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonEscape.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonEscape.Image = ((System.Drawing.Image)(resources.GetObject("buttonEscape.Image")));
-            this.buttonEscape.Location = new System.Drawing.Point(338, 0);
-            this.buttonEscape.Name = "buttonEscape";
-            this.buttonEscape.Size = new System.Drawing.Size(30, 30);
-            this.buttonEscape.TabIndex = 25;
-            this.buttonEscape.UseVisualStyleBackColor = true;
-            this.buttonEscape.Click += new System.EventHandler(this.buttonEscape_Click);
             // 
             // textBox1
             // 
@@ -1024,7 +994,7 @@ namespace CalcApp
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.textBox1.ShortcutsEnabled = false;
-            this.textBox1.Size = new System.Drawing.Size(360, 53);
+            this.textBox1.Size = new System.Drawing.Size(333, 53);
             this.textBox1.TabIndex = 29;
             this.textBox1.TabStop = false;
             this.textBox1.Text = "0";
@@ -1075,7 +1045,7 @@ namespace CalcApp
             this.textBox2.ForeColor = System.Drawing.SystemColors.Control;
             this.textBox2.Location = new System.Drawing.Point(4, 74);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(360, 23);
+            this.textBox2.Size = new System.Drawing.Size(333, 23);
             this.textBox2.TabIndex = 30;
             this.textBox2.Text = "textBox2";
             this.textBox2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1088,50 +1058,21 @@ namespace CalcApp
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 30);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(368, 40);
+            this.panel1.Size = new System.Drawing.Size(341, 40);
             this.panel1.TabIndex = 31;
             // 
             // labelMode
             // 
             this.labelMode.AutoSize = true;
             this.labelMode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelMode.Font = new System.Drawing.Font("Boycott", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelMode.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelMode.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelMode.Location = new System.Drawing.Point(40, 0);
+            this.labelMode.Margin = new System.Windows.Forms.Padding(0);
             this.labelMode.Name = "labelMode";
-            this.labelMode.Size = new System.Drawing.Size(137, 39);
+            this.labelMode.Size = new System.Drawing.Size(111, 33);
             this.labelMode.TabIndex = 2;
-            this.labelMode.Text = "scientific";
-            // 
-            // buttonHistory
-            // 
-            this.buttonHistory.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonHistory.Enabled = false;
-            this.buttonHistory.FlatAppearance.BorderSize = 0;
-            this.buttonHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHistory.Image = global::CalcApp.Properties.Resources.icons8_Past_30px;
-            this.buttonHistory.Location = new System.Drawing.Point(328, 0);
-            this.buttonHistory.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonHistory.Name = "buttonHistory";
-            this.buttonHistory.Size = new System.Drawing.Size(40, 40);
-            this.buttonHistory.TabIndex = 1;
-            this.buttonHistory.UseVisualStyleBackColor = true;
-            this.buttonHistory.Visible = false;
-            // 
-            // buttonMenu
-            // 
-            this.buttonMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.buttonMenu.FlatAppearance.BorderSize = 0;
-            this.buttonMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMenu.Font = new System.Drawing.Font("Times New Roman", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonMenu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonMenu.Image = global::CalcApp.Properties.Resources.icons8_Menu_30px;
-            this.buttonMenu.Location = new System.Drawing.Point(0, 0);
-            this.buttonMenu.Name = "buttonMenu";
-            this.buttonMenu.Size = new System.Drawing.Size(40, 40);
-            this.buttonMenu.TabIndex = 0;
-            this.buttonMenu.UseVisualStyleBackColor = true;
-            this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
+            this.labelMode.Text = "Scientific";
             // 
             // toolTip1
             // 
@@ -1158,7 +1099,7 @@ namespace CalcApp
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(364, 38);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(337, 38);
             this.tableLayoutPanel2.TabIndex = 32;
             // 
             // buttonHYP
@@ -1169,10 +1110,10 @@ namespace CalcApp
             this.buttonHYP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonHYP.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonHYP.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonHYP.Location = new System.Drawing.Point(62, 2);
+            this.buttonHYP.Location = new System.Drawing.Point(58, 2);
             this.buttonHYP.Margin = new System.Windows.Forms.Padding(2);
             this.buttonHYP.Name = "buttonHYP";
-            this.buttonHYP.Size = new System.Drawing.Size(56, 34);
+            this.buttonHYP.Size = new System.Drawing.Size(52, 34);
             this.buttonHYP.TabIndex = 1;
             this.buttonHYP.Text = "HYP";
             this.buttonHYP.UseVisualStyleBackColor = false;
@@ -1189,7 +1130,7 @@ namespace CalcApp
             this.buttonDRG.Location = new System.Drawing.Point(2, 2);
             this.buttonDRG.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDRG.Name = "buttonDRG";
-            this.buttonDRG.Size = new System.Drawing.Size(56, 34);
+            this.buttonDRG.Size = new System.Drawing.Size(52, 34);
             this.buttonDRG.TabIndex = 0;
             this.buttonDRG.Text = "DEG";
             this.buttonDRG.UseVisualStyleBackColor = false;
@@ -1203,10 +1144,10 @@ namespace CalcApp
             this.buttonM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonM.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonM.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonM.Location = new System.Drawing.Point(303, 2);
+            this.buttonM.Location = new System.Drawing.Point(282, 2);
             this.buttonM.Margin = new System.Windows.Forms.Padding(2);
             this.buttonM.Name = "buttonM";
-            this.buttonM.Size = new System.Drawing.Size(59, 34);
+            this.buttonM.Size = new System.Drawing.Size(53, 34);
             this.buttonM.TabIndex = 3;
             this.buttonM.Text = "M";
             this.buttonM.UseVisualStyleBackColor = false;
@@ -1219,7 +1160,7 @@ namespace CalcApp
             this.buttonMC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMC.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonMC.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonMC.Location = new System.Drawing.Point(243, 2);
+            this.buttonMC.Location = new System.Drawing.Point(222, 2);
             this.buttonMC.Margin = new System.Windows.Forms.Padding(2);
             this.buttonMC.Name = "buttonMC";
             this.buttonMC.Size = new System.Drawing.Size(56, 34);
@@ -1243,7 +1184,7 @@ namespace CalcApp
             this.menuStrip1.Location = new System.Drawing.Point(0, 69);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.menuStrip1.Size = new System.Drawing.Size(219, 531);
+            this.menuStrip1.Size = new System.Drawing.Size(219, 495);
             this.menuStrip1.TabIndex = 33;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.Visible = false;
@@ -1277,13 +1218,73 @@ namespace CalcApp
             this.scientificToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.scientificToolStripMenuItem.Click += new System.EventHandler(this.buttonMenuChange_Click);
             // 
+            // buttonHistory
+            // 
+            this.buttonHistory.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonHistory.Enabled = false;
+            this.buttonHistory.FlatAppearance.BorderSize = 0;
+            this.buttonHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonHistory.Image = global::CalcApp.Properties.Resources.icons8_Past_30px;
+            this.buttonHistory.Location = new System.Drawing.Point(301, 0);
+            this.buttonHistory.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonHistory.Name = "buttonHistory";
+            this.buttonHistory.Size = new System.Drawing.Size(40, 40);
+            this.buttonHistory.TabIndex = 1;
+            this.buttonHistory.UseVisualStyleBackColor = true;
+            this.buttonHistory.Visible = false;
+            // 
+            // buttonMenu
+            // 
+            this.buttonMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonMenu.FlatAppearance.BorderSize = 0;
+            this.buttonMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMenu.Font = new System.Drawing.Font("Times New Roman", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonMenu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonMenu.Image = global::CalcApp.Properties.Resources.icons8_Menu_30px;
+            this.buttonMenu.Location = new System.Drawing.Point(0, 0);
+            this.buttonMenu.Name = "buttonMenu";
+            this.buttonMenu.Size = new System.Drawing.Size(40, 40);
+            this.buttonMenu.TabIndex = 0;
+            this.buttonMenu.UseVisualStyleBackColor = true;
+            this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
+            // 
+            // buttonMaximaze
+            // 
+            this.buttonMaximaze.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonMaximaze.FlatAppearance.BorderSize = 0;
+            this.buttonMaximaze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMaximaze.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonMaximaze.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonMaximaze.Image = ((System.Drawing.Image)(resources.GetObject("buttonMaximaze.Image")));
+            this.buttonMaximaze.Location = new System.Drawing.Point(281, 0);
+            this.buttonMaximaze.Name = "buttonMaximaze";
+            this.buttonMaximaze.Size = new System.Drawing.Size(30, 30);
+            this.buttonMaximaze.TabIndex = 27;
+            this.buttonMaximaze.UseVisualStyleBackColor = true;
+            this.buttonMaximaze.Click += new System.EventHandler(this.buttonMaximaze_Click);
+            // 
+            // buttonEscape
+            // 
+            this.buttonEscape.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonEscape.FlatAppearance.BorderSize = 0;
+            this.buttonEscape.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEscape.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonEscape.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonEscape.Image = ((System.Drawing.Image)(resources.GetObject("buttonEscape.Image")));
+            this.buttonEscape.Location = new System.Drawing.Point(311, 0);
+            this.buttonEscape.Name = "buttonEscape";
+            this.buttonEscape.Size = new System.Drawing.Size(30, 30);
+            this.buttonEscape.TabIndex = 25;
+            this.buttonEscape.UseVisualStyleBackColor = true;
+            this.buttonEscape.Click += new System.EventHandler(this.buttonEscape_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(368, 600);
+            this.ClientSize = new System.Drawing.Size(341, 564);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.textBox2);
@@ -1295,7 +1296,7 @@ namespace CalcApp
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Modern No. 20", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.MinimumSize = new System.Drawing.Size(345, 580);
+            this.MinimumSize = new System.Drawing.Size(337, 560);
             this.Name = "Form1";
             this.Opacity = 0.97D;
             this.ShowIcon = false;

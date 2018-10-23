@@ -146,6 +146,7 @@
     <None Include="Resources\copmini.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="blur1.png" />
     <Content Include="icon.ico" />
     <None Include="Resources\icons8_Virtual_Machine_20px_1.png" />
     <None Include="Resources\крест1.png" />
