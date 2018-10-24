@@ -157,7 +157,7 @@ namespace CalcApp
             this.buttonDot.Name = "buttonDot";
             this.buttonDot.Size = new System.Drawing.Size(64, 43);
             this.buttonDot.TabIndex = 3;
-            this.buttonDot.Text = ",";
+            this.buttonDot.Text = ".";
             this.buttonDot.UseVisualStyleBackColor = false;
             this.buttonDot.Click += new System.EventHandler(this.NumbersAndDot);
             // 
@@ -321,7 +321,7 @@ namespace CalcApp
             this.buttonPlus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonPlus.FlatAppearance.BorderSize = 0;
             this.buttonPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPlus.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonPlus.Font = new System.Drawing.Font("Swis721 Hv BT", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonPlus.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonPlus.Location = new System.Drawing.Point(206, 317);
             this.buttonPlus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 4);
@@ -826,18 +826,22 @@ namespace CalcApp
             this.buttonEquals.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonEquals.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonEquals.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonEquals.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.buttonEquals.FlatAppearance.BorderSize = 0;
+            this.buttonEquals.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.buttonEquals.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEquals.Font = new System.Drawing.Font("Arial", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonEquals.Font = new System.Drawing.Font("Square721 BT", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)), true);
             this.buttonEquals.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonEquals.Location = new System.Drawing.Point(274, 317);
             this.buttonEquals.Margin = new System.Windows.Forms.Padding(2, 2, 4, 4);
             this.buttonEquals.Name = "buttonEquals";
             this.buttonEquals.Size = new System.Drawing.Size(63, 43);
             this.buttonEquals.TabIndex = 17;
-            this.buttonEquals.Text = "═";
+            this.buttonEquals.Text = "=";
             this.buttonEquals.UseVisualStyleBackColor = false;
             this.buttonEquals.Click += new System.EventHandler(this.buttonEquals_Click);
+            this.buttonEquals.MouseEnter += new System.EventHandler(this.HoverOverButtonsIn);
+            this.buttonEquals.MouseLeave += new System.EventHandler(this.HoverOverButtonsOut);
             // 
             // buttonLog
             // 
@@ -937,11 +941,11 @@ namespace CalcApp
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("RUSBoycott", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(3, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 23);
+            this.label1.Size = new System.Drawing.Size(79, 19);
             this.label1.TabIndex = 26;
             this.label1.Text = "Calculator ";
             this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseDown);
@@ -969,11 +973,11 @@ namespace CalcApp
             this.buttonMinimize.Dock = System.Windows.Forms.DockStyle.Right;
             this.buttonMinimize.FlatAppearance.BorderSize = 0;
             this.buttonMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMinimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonMinimize.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonMinimize.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonMinimize.Location = new System.Drawing.Point(251, 0);
+            this.buttonMinimize.Location = new System.Drawing.Point(206, 0);
             this.buttonMinimize.Name = "buttonMinimize";
-            this.buttonMinimize.Size = new System.Drawing.Size(30, 30);
+            this.buttonMinimize.Size = new System.Drawing.Size(45, 30);
             this.buttonMinimize.TabIndex = 28;
             this.buttonMinimize.Text = "–";
             this.buttonMinimize.UseVisualStyleBackColor = true;
@@ -987,9 +991,9 @@ namespace CalcApp
             this.buttonMaximaze.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonMaximaze.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonMaximaze.Image = ((System.Drawing.Image)(resources.GetObject("buttonMaximaze.Image")));
-            this.buttonMaximaze.Location = new System.Drawing.Point(281, 0);
+            this.buttonMaximaze.Location = new System.Drawing.Point(251, 0);
             this.buttonMaximaze.Name = "buttonMaximaze";
-            this.buttonMaximaze.Size = new System.Drawing.Size(30, 30);
+            this.buttonMaximaze.Size = new System.Drawing.Size(45, 30);
             this.buttonMaximaze.TabIndex = 27;
             this.buttonMaximaze.UseVisualStyleBackColor = true;
             this.buttonMaximaze.Click += new System.EventHandler(this.buttonMaximaze_Click);
@@ -998,13 +1002,14 @@ namespace CalcApp
             // 
             this.buttonEscape.Dock = System.Windows.Forms.DockStyle.Right;
             this.buttonEscape.FlatAppearance.BorderSize = 0;
+            this.buttonEscape.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.buttonEscape.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEscape.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonEscape.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonEscape.Image = ((System.Drawing.Image)(resources.GetObject("buttonEscape.Image")));
-            this.buttonEscape.Location = new System.Drawing.Point(311, 0);
+            this.buttonEscape.Location = new System.Drawing.Point(296, 0);
             this.buttonEscape.Name = "buttonEscape";
-            this.buttonEscape.Size = new System.Drawing.Size(30, 30);
+            this.buttonEscape.Size = new System.Drawing.Size(45, 30);
             this.buttonEscape.TabIndex = 25;
             this.buttonEscape.UseVisualStyleBackColor = true;
             this.buttonEscape.Click += new System.EventHandler(this.buttonEscape_Click);
@@ -1087,6 +1092,7 @@ namespace CalcApp
             this.panel1.Controls.Add(this.buttonMenu);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 30);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(341, 40);
             this.panel1.TabIndex = 31;
@@ -1285,6 +1291,7 @@ namespace CalcApp
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(341, 564);
+            this.ControlBox = false;
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.textBox2);
@@ -1296,12 +1303,12 @@ namespace CalcApp
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Modern No. 20", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MinimumSize = new System.Drawing.Size(337, 560);
             this.Name = "Form1";
             this.Opacity = 0.97D;
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Calculator";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.tableLayoutPanel1.ResumeLayout(false);

@@ -14,11 +14,12 @@ namespace CalcApp
     {
         public Form1()
         {
+            this.Text = string.Empty;
             InitializeComponent();
         }
 
-        public const string Version = "1.0.2", //версия
-            LastUpdate = "LastUpdate:\n· A little change in a SolutionFunc case dms";//комментарии к версии
+        public const string Version = "1.0.3.1", //версия
+            LastUpdate = "LastUpdate:\n· Beginning of big changes...";//комментарии к версии
 
         double Result { get; set; } = 0;//для результата решения
         double Digit { get; set; } = 0;//первое число для нахождения ответа
@@ -42,6 +43,9 @@ namespace CalcApp
         char minus { get; } = '-';//константа символа минуса
         char dev { get; } = '÷';//константа символа деления
 
+        string FDot { get; } = ".";
+        char Fdot { get; } = '.';
+
         bool Entering { get; set; } = false;//вводится ли в данный момент число
         bool Cleaner { get; set; } = false;//очищать ли при след. действии поле
         bool Stoper { get; set; } = false;//введены некорректные данные
@@ -53,6 +57,8 @@ namespace CalcApp
 
         float MinWidText { get; } = 12f;//мин. размер поля для числа
         float MaxWidText { get; } = 32f;//макс. размер поля для числа
+
+        List<string> history { get; set; } = new List<string>();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -169,7 +175,7 @@ namespace CalcApp
                     string tmp = textBox1.Text;
                     for (int i = 0; i < textBox1.Text.Length; i++) //попытка исправления ошибки
                     {
-                        if ((!Char.IsDigit(textBox1.Text[i]) && textBox1.Text[i] != ',') && (i != 0 || textBox1.Text[i] != minus))
+                        if ((!Char.IsDigit(textBox1.Text[i]) && textBox1.Text[i] != Fdot) && (i != 0 || textBox1.Text[i] != minus))
                         {
                             textBox1.Text = textBox1.Text.Remove(i, 1);
                             i--;
@@ -231,17 +237,17 @@ namespace CalcApp
             {
                 if (textBox1.Text.Last() == '0' && (textBox1.Text[textBox1.Text.Length - 2] == plus || textBox1.Text[textBox1.Text.Length - 2] == minus))
                     textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
-                if (b.Text != ",")
+                if (b.Text != FDot)
                     textBox1.Text += b.Text;
             }
             else //обычные условия
             {
-                if (b.Text == ",") //десятичная точка
+                if (b.Text == FDot) //десятичная точка
                 {
-                    if (!textBox1.Text.Contains(",") && (textBox1.Text.Length != 0))
-                        textBox1.Text += ",";
+                    if (!textBox1.Text.Contains(FDot) && (textBox1.Text.Length != 0))
+                        textBox1.Text += FDot;
                     else if (textBox1.Text.Length == 0)
-                        textBox1.Text = "0,";
+                        textBox1.Text = "0.";
                     Entering = true;
                 }
                 else if (b.Text == "0") //нуль
@@ -279,7 +285,7 @@ namespace CalcApp
                 string tmp = textBox1.Text;
                 for (int i = 0; i < textBox1.Text.Length; i++)
                 {
-                    if ((!Char.IsDigit(textBox1.Text[i]) && textBox1.Text[i] != ',') && (i != 0 || textBox1.Text[i] != minus))
+                    if ((!Char.IsDigit(textBox1.Text[i]) && textBox1.Text[i] != Fdot) && (i != 0 || textBox1.Text[i] != minus))
                     {
                         textBox1.Text = textBox1.Text.Remove(i, 1);
                         i--;
@@ -322,9 +328,9 @@ namespace CalcApp
                 }
                 else
                 {
-                    if(Operation == Mul || Operation == Dev || Operation == "^")
+                    if (Operation == Mul || Operation == Dev || Operation == "^")
                     {
-                        if(textBox2.Text[textBox2.Text.Length - 3] != ')' && CountOperations > 2)
+                        if (textBox2.Text[textBox2.Text.Length - 3] != ')' && CountOperations > 2)
                         {
                             textBox2.Text = textBox2.Text.Remove(textBox2.Text.Length - 2, 2) + ") " + Operation;
                             textBox2.Text = textBox2.Text.Insert(1, "(");
@@ -363,6 +369,7 @@ namespace CalcApp
             if (text.Length > 0 && text[0] == ' ')
                 text = text.Remove(0, 1);
             //все что было сверху это форматирование/подготовка строки для решения
+            history.Add(text);
             try //если решать ничего не нужно
             {
                 Result = Convert.ToDouble(text);
@@ -371,35 +378,31 @@ namespace CalcApp
             {
                 if (text.Contains("(")) //handler brackets
                 {
-                    int ibegin = 0, iend = 0, CountLeftBrackets = 0, CountRightBrackets = 0, oldiend = 0;//временные файлы
-                    for (int i = 0; i < text.Length; i++)
-                        if (text[i] == '(')
-                            CountLeftBrackets++;//счетчик левых скобок
-                    for (int i = 0; i < text.Length; i++)
-                        if (text[i] == ')')
-                            CountRightBrackets++;//счетчик правых скобок
+                    int ibegin = -1, iend = -1, CountLeftBrackets = 0, CountRightBrackets = 0, oldiend = 0;//временные данные
+                    //for (int i = 0; i < text.Length; i++)
+                    //    if (text[i] == '(')
+                    //        CountLeftBrackets++;//счетчик левых скобок
+                    CountLeftBrackets = text.Count(x => x == '(');
+                    //for (int i = 0; i < text.Length; i++)
+                    //    if (text[i] == ')')
+                    //        CountRightBrackets++;//счетчик правых скобок
+                    CountRightBrackets = text.Count(x => x == ')');
                     if (CountLeftBrackets > CountRightBrackets)
                         text = text + new string(')', CountLeftBrackets - CountRightBrackets);//выравнивание скобок
-                    MessageBox.Show(text);
-                    for (int loop = 0; loop < CountLeftBrackets; loop++)//решение всех собок
-                    //while(text.Contains("(m"))
+                    MessageBox.Show(text + "| contains a brackets");
+                    //for (int loop = 0; loop < CountLeftBrackets; loop++)//решение всех собок
+                    while (text.Contains("("))
                     {
                         for (int i = 0; i < text.Length; i++) //поиск последней левой скобки
                             if (text[i] == '(')
                                 ibegin = i;
-                        for (int j = ibegin + 1; j < text.Length; j++)//поиск первой правой скобки
+                        for (int j = ibegin + 1; j < text.Length; j++)//поиск первой правой скобки, после последней левой скобки
                             if (text[j] == ')')
                             {
                                 iend = j;
                                 break;
                             }
-                        //while (iend < ibegin)
-                        //    for (int j = iend + 1; j < text.Length; j++)
-                        //        if (text[j] == ')')
-                        //        {
-                        //            iend = j;
-                        //            break;
-                        //        }
+
                         oldiend = iend;//сохранение индекса для выхода из рекурсии
                         string tmp = text;
                         //
@@ -415,15 +418,17 @@ namespace CalcApp
                             if (iend != text.Length - 1)
                                 tmp = text.Remove(iend + 1);
                             tmp = tmp.Remove(0, ibegin);
-                            MessageBox.Show(tmp + "| tmp");
+                            MessageBox.Show(tmp + "| func");
                             SolutionFunc(tmp);//и отправляем ее на решение
                         }
                         else//получаем строку внитри скобок
                         {
+
                             if (oldiend <= text.Length - 1)
                                 tmp = text.Remove(oldiend);
-                            if (tmp[0] == '(')
-                                tmp = tmp.Remove(0, ibegin + 1);
+                            //if (tmp[0] == '(')
+                            tmp = tmp.Remove(0, ibegin + 1);
+                            MessageBox.Show(tmp + "| brackets");
                             Solution(tmp);//и отправляем ее на решение(рекурсия)
                         }
                         CountBrackets--;//отсчитываем счетчик, т.к. решили скобку
@@ -439,14 +444,14 @@ namespace CalcApp
                         { //решение степеней
                             int ibegin = i - 2, iend = i + 2;//создание начальных индексов
                             if (text[i] == 'y' && text[i + 1] == 'r' && text[i + 2] == 'o' && text[i + 3] == 'o' && text[i + 4] == 't')
-                                iend += 4; 
+                                iend += 4;
                             string tmp = null;
-                            for (; ibegin >= 0 && (Char.IsDigit(text[ibegin]) || text[ibegin] == ',' || text[ibegin] == minus); --ibegin)
+                            for (; ibegin >= 0 && (Char.IsDigit(text[ibegin]) || text[ibegin] == Fdot || text[ibegin] == minus); --ibegin)
                                 tmp = text[ibegin].ToString() + tmp; //поиск левого числа, т.е. стоящего перед операцией
                             ibegin++;
                             Digit = Convert.ToDouble(tmp);
                             tmp = null;
-                            for (; iend <= text.Length - 1 && (Char.IsDigit(text[iend]) || text[iend] == ','); iend++)
+                            for (; iend <= text.Length - 1 && (Char.IsDigit(text[iend]) || text[iend] == Fdot); iend++)
                                 tmp += text[iend].ToString();//поиск правого числа, т.е. стоящего после операции
                             Number = Convert.ToDouble(tmp);
                             switch (text[i])
@@ -471,12 +476,12 @@ namespace CalcApp
                             if (text[i] == 'M' && text[i + 1] == 'o' && text[i + 2] == 'd')
                                 iend += 2;
                             string tmp = null;
-                            for (; ibegin >= 0 && (Char.IsDigit(text[ibegin]) || text[ibegin] == ',' || text[ibegin] == minus); --ibegin)
+                            for (; ibegin >= 0 && (Char.IsDigit(text[ibegin]) || text[ibegin] == Fdot || text[ibegin] == minus); --ibegin)
                                 tmp = text[ibegin].ToString() + tmp;
                             ibegin++;
                             Digit = Convert.ToDouble(tmp);
                             tmp = null;
-                            for (; iend <= text.Length - 1 && (Char.IsDigit(text[iend]) || text[iend] == ','); iend++)
+                            for (; iend <= text.Length - 1 && (Char.IsDigit(text[iend]) || text[iend] == Fdot); iend++)
                                 tmp += text[iend].ToString();
                             Number = Convert.ToDouble(tmp);
                             switch (text[i])
@@ -503,12 +508,12 @@ namespace CalcApp
                         {
                             int ibegin = i - 2, iend = i + 2;
                             string tmp = null;
-                            for (; ibegin >= 0 && (Char.IsDigit(text[ibegin]) || text[ibegin] == ',' || text[ibegin] == minus); --ibegin)
+                            for (; ibegin >= 0 && (Char.IsDigit(text[ibegin]) || text[ibegin] == Fdot || text[ibegin] == minus); --ibegin)
                                 tmp = text[ibegin].ToString() + tmp;
                             ibegin++;
                             Digit = Convert.ToDouble(tmp);
                             tmp = null;
-                            for (; iend <= text.Length - 1 && (Char.IsDigit(text[iend]) || text[iend] == ','); iend++)
+                            for (; iend <= text.Length - 1 && (Char.IsDigit(text[iend]) || text[iend] == Fdot); iend++)
                                 tmp += text[iend].ToString();
                             Number = Convert.ToDouble(tmp);
                             switch (text[i])
@@ -531,12 +536,11 @@ namespace CalcApp
                     MessageBox.Show("Code #3:\n" + $@"""{text}""" + "\n...\nUnknown error\nFor continued press OK.", "Error");
                     buttonCancel.PerformClick();
                 }
-                try//попытка принять решение, если удалось, то оно записывается в Result
+                try
                 {
-                    text = text.Replace('.', ',');
                     Result = Convert.ToDouble(text);
                 }
-                catch//что-то пошло не так
+                catch
                 {
                     try//попытка исправить
                     {
@@ -581,7 +585,7 @@ namespace CalcApp
                 PossibleAnswer = Convert.ToDouble(textBox1.Text);
             }
             catch { }
-            if(textBox1.Text.Contains("e"))//представления экс-ого числа в обычном виде
+            if (textBox1.Text.Contains("e"))//представления экс-ого числа в обычном виде
             {
                 try
                 {
@@ -659,7 +663,7 @@ namespace CalcApp
 
         private void ChangeSizeForm()
         {//регулирование размера строки в поле 
-            for(int i = 0; i < 20; i++)
+            for (int i = 0; i < 20; i++)
             {
                 if (textBox1.Size.Width > textBox1.Font.Size * textBox1.Text.Length && textBox1.Font.Size < MaxWidText)
                     textBox1.Font = new Font(textBox1.Font.FontFamily, textBox1.Font.Size + 0.5f);//увеличение
@@ -714,7 +718,7 @@ namespace CalcApp
             if (textBox2.Text.Contains("("))//если левые скобки
             {
                 int clb = 0, crb = 0;
-                for(int i = 0; i < textBox2.Text.Length; i++)
+                for (int i = 0; i < textBox2.Text.Length; i++)
                 {
                     if (textBox2.Text[i] == '(')
                         clb++;
@@ -751,7 +755,7 @@ namespace CalcApp
                 b.Font = new Font(b.Font.FontFamily, 10.5f, FontStyle.Bold);
             }
             else
-            { 
+            {
                 DRG = "DEG";
                 b.Font = new Font(b.Font.FontFamily, 12f, FontStyle.Bold);
             }
@@ -760,7 +764,7 @@ namespace CalcApp
 
         private void buttonHYP_Click(object sender, EventArgs e)
         {//вкл./выкл. режим гиперболических фун.
-            Button b = (Button)sender; 
+            Button b = (Button)sender;
             b.FlatAppearance.BorderColor = Color.White;
             if (b.FlatAppearance.BorderSize == 0)
                 b.FlatAppearance.BorderSize = 2;
@@ -885,9 +889,9 @@ namespace CalcApp
                         str = "sinₒ";
                     else if (DRG == "RAD")
                         str = "sinᵣ";
-                    else if(DRG == "GRAD")
+                    else if (DRG == "GRAD")
                         str = "sin₉";
-                        break;
+                    break;
                 case "cos":
                     if (DRG == "DEG")
                         str = "cosₒ";
@@ -904,8 +908,8 @@ namespace CalcApp
                     else if (DRG == "GRAD")
                         str = "tan₉";
                     break;
-                //case "xʸ": break; - их тут нет потому, что по-моей логики они операции
-                //case "ꙷ√x": break; - оставил тут, как знак того, что я их помню
+                //case "xʸ": break; - их тут нет потому, что по-моей логике они операции
+                //case "ꙷ√x": break; - оставил тут, как знак того, что я о них помню
                 case "√":
                     str = "√";
                     break;
@@ -1035,7 +1039,7 @@ namespace CalcApp
             }
             else //func exp/exf, if(str == "e+0")
             {
-                if(textBox2.Text.Length == 0 || (textBox2.Text.Length > 2 && !textBox2.Text.Contains("(")))
+                if (textBox2.Text.Length == 0 || (textBox2.Text.Length > 2 && !textBox2.Text.Contains("(")))
                 {
                     if (textBox1.Text != "0")
                     {
@@ -1081,7 +1085,7 @@ namespace CalcApp
                     if (Double.IsInfinity(Result))
                         Stoper = true;
                     break;
-                    //beginning trigonometry func
+                //beginning trigonometry func
                 case "sinᵣ":
                     Result *= 1.0 / PiDivide180;
                     Result = Math.Round(Result);
@@ -1134,7 +1138,7 @@ namespace CalcApp
                     else
                         Stoper = true;
                     break;
-                    //ending trigonometry func
+                //ending trigonometry func
                 case "√"://квадратный корень
                     if (Result >= 0)
                         Result = Math.Sqrt(Result);
@@ -1173,7 +1177,7 @@ namespace CalcApp
                 case "e^"://возведение в экспаненту
                     Result = Math.Exp(Result);
                     break;
-                    //beginning arc trigonometry func
+                //beginning arc trigonometry func
                 case "sinᵣˉ¹":
                     Result = Math.Asin(Result);
                     break;
@@ -1201,7 +1205,7 @@ namespace CalcApp
                 case "tan₉ˉ¹":
                     Result = 1.0 / PiDivede200 * Math.Atan(Result);
                     break;
-                    //ending arc trigonometry func
+                //ending arc trigonometry func
                 case "1/"://один делите на, что хотите(кроме нуля)
                     Result = 1.0 / Result;
                     if (Double.IsInfinity(Result))
@@ -1210,7 +1214,7 @@ namespace CalcApp
                 case "cube"://куб
                     Result = Math.Pow(Result, 3.0);
                     break;
-                    //hyperbolic trigonometry func
+                //hyperbolic trigonometry func
                 case "sinh":
                     Result = Math.Sinh(Result);
                     break;
@@ -1220,7 +1224,7 @@ namespace CalcApp
                 case "tanh":
                     Result = Math.Tanh(Result);
                     break;
-                    //arc hyperbolic trigonometry func
+                //arc hyperbolic trigonometry func
                 case "sinhˉ¹":
                     Result = Math.Log(Result + Math.Sqrt(Math.Pow(Result, 2.0) + 1.0));
                     break;
@@ -1293,7 +1297,7 @@ namespace CalcApp
             textBox1.Paste();
             for (int i = 0; i < textBox1.Text.Length; i++)
             {//если вы не правильно откуда-то скопировали, тут это попробуют утрести
-                if ((!Char.IsDigit(textBox1.Text[i]) && textBox1.Text[i] != ',') && (i != 0 || textBox1.Text[i] != minus))
+                if ((!Char.IsDigit(textBox1.Text[i]) && textBox1.Text[i] != Fdot) && (i != 0 || textBox1.Text[i] != minus))
                 {
                     textBox1.Text = textBox1.Text.Remove(i, 1);
                     i--;
@@ -1335,6 +1339,18 @@ namespace CalcApp
         private void label1_MouseHover(object sender, EventArgs e)
         {//показывает апдейтики при наведении на версию
             toolTip1.Show(LastUpdate, label1);
+        }
+
+        private void HoverOverButtonsIn(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            b.FlatAppearance.BorderSize = 1;
+        }
+
+        private void HoverOverButtonsOut(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            b.FlatAppearance.BorderSize = 0;
         }
     }
 }
