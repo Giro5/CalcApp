@@ -1,0 +1,103 @@
+            if (text.Length > 2 && (text[text.Length - 1] == mul || text[text.Length - 1] == plus || text[text.Length - 1] == minus || text[text.Length - 1] == div || text[text.Length - 1] == '^'))
+                text = text.Remove(text.Length - 2);
+            else if (text.Length > 2 && text[text.Length - 1] == 'd')
+                text = text.Remove(text.Length - 4);
+            else if (text.Length > 2 && text[text.Length - 1] == 't')
+                text = text.Remove(text.Length - 7);
+
+
+
+
+
+                    for (int i = 0; i < text.Length; i++) //degree and(or) root
+                    {
+                        if ((text[i] == '^' && text[i - 1] == ' ' && text[i + 1] == ' ') || (text[i] == 'y' && text[i + 1] == 'r' && text[i + 2] == 'o' && text[i + 3] == 'o' && text[i + 4] == 't'))
+                        { //решение степеней
+                            int ibegin = i - 2, iend = i + 2;//создание начальных индексов
+                            if (text[i] == 'y' && text[i + 1] == 'r' && text[i + 2] == 'o' && text[i + 3] == 'o' && text[i + 4] == 't')
+                                iend += 4;
+                            string tmp = null;
+                            for (; ibegin >= 0 && (Char.IsDigit(text[ibegin]) || text[ibegin] == Fdot || text[ibegin] == minus); --ibegin)
+                                tmp = text[ibegin].ToString() + tmp; //поиск левого числа, т.е. стоящего перед операцией
+                            ibegin++;
+                            Digit = Convert.ToDouble(tmp);
+                            tmp = null;
+                            for (; iend <= text.Length - 1 && (Char.IsDigit(text[iend]) || text[iend] == Fdot); iend++)
+                                tmp += text[iend].ToString();//поиск правого числа, т.е. стоящего после операции
+                            Number = Convert.ToDouble(tmp);
+                            switch (text[i])
+                            {
+                                case '^': //возведение в степень
+                                    text = text.Remove(ibegin, iend - ibegin);
+                                    text = text.Insert(ibegin, Math.Pow(Digit, Number).ToString());
+                                    break;
+                                case 'y': //нахождение корня
+                                    text = text.Remove(ibegin, iend - ibegin);
+                                    text = text.Insert(ibegin, Math.Pow(Digit, 1.0 / Number).ToString());
+                                    break;
+                            }
+                            i = 0;//после решения оперции, поиск оперций происходит сначала
+                        }
+                    }
+                    for (int i = 0; i < text.Length; i++) //multiplication and(or) dividing and(or) Mod
+                    {
+                        if (text[i] == mul || (text[i] == dev && text[i - 1] == ' ' && text[i + 1] == ' ') || (text[i] == 'M' && text[i + 1] == 'o' && text[i + 2] == 'd'))
+                        {
+                            int ibegin = i - 2, iend = i + 2;
+                            if (text[i] == 'M' && text[i + 1] == 'o' && text[i + 2] == 'd')
+                                iend += 2;
+                            string tmp = null;
+                            for (; ibegin >= 0 && (Char.IsDigit(text[ibegin]) || text[ibegin] == Fdot || text[ibegin] == minus); --ibegin)
+                                tmp = text[ibegin].ToString() + tmp;
+                            ibegin++;
+                            Digit = Convert.ToDouble(tmp);
+                            tmp = null;
+                            for (; iend <= text.Length - 1 && (Char.IsDigit(text[iend]) || text[iend] == Fdot); iend++)
+                                tmp += text[iend].ToString();
+                            Number = Convert.ToDouble(tmp);
+                            switch (text[i])
+                            {
+                                case '?': //умножение
+                                    text = text.Remove(ibegin, iend - ibegin);
+                                    text = text.Insert(ibegin, (Digit * Number).ToString());
+                                    break;
+                                case '?': //деление
+                                    text = text.Remove(ibegin, iend - ibegin);
+                                    text = text.Insert(ibegin, (Digit / Number).ToString());
+                                    break;
+                                case 'M': //остаток от деления
+                                    text = text.Remove(ibegin, iend - ibegin);
+                                    text = text.Insert(ibegin, (Digit % Number).ToString());
+                                    break;
+                            }
+                            i = 0;
+                        }
+                    }
+                    for (int i = 0; i < text.Length; i++) //summation and(or) subtracting
+                    {
+                        if ((text[i] == plus && text[i - 1] == ' ' && text[i + 1] == ' ') || (text[i] == minus && text[i + 1] == ' '))
+                        {
+                            int ibegin = i - 2, iend = i + 2;
+                            string tmp = null;
+                            for (; ibegin >= 0 && (Char.IsDigit(text[ibegin]) || text[ibegin] == Fdot || text[ibegin] == minus); --ibegin)
+                                tmp = text[ibegin].ToString() + tmp;
+                            ibegin++;
+                            Digit = Convert.ToDouble(tmp);
+                            tmp = null;
+                            for (; iend <= text.Length - 1 && (Char.IsDigit(text[iend]) || text[iend] == Fdot); iend++)
+                                tmp += text[iend].ToString();
+                            Number = Convert.ToDouble(tmp);
+                            switch (text[i])
+                            {
+                                case '+': //складывание
+                                    text = text.Remove(ibegin, iend - ibegin);
+                                    text = text.Insert(ibegin, (Digit + Number).ToString());
+                                    break;
+                                case '-': //вычитание
+                                    text = text.Remove(ibegin, iend - ibegin);
+                                    text = text.Insert(ibegin, (Digit - Number).ToString());
+                                    break;
+                            }
+                            i = 0;
+                        }
+                    }

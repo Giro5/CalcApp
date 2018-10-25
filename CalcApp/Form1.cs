@@ -14,12 +14,11 @@ namespace CalcApp
     {
         public Form1()
         {
-            this.Text = string.Empty;
             InitializeComponent();
         }
 
-        public const string Version = "1.0.3.1", //версия
-            LastUpdate = "LastUpdate:\n· Beginning of big changes...";//комментарии к версии
+        public const string Version = "1.0.3", //версия
+            LastUpdate = "LastUpdate:\n· Completely remaded the Solution method";//комментарии к версии
 
         double Result { get; set; } = 0;//для результата решения
         double Digit { get; set; } = 0;//первое число для нахождения ответа
@@ -36,12 +35,12 @@ namespace CalcApp
         //string Mul { get { return mul.ToString(); } }
         string Plus { get; } = "+";//константа строки плюса
         string Minus { get; } = "-";//константа строки минуса
-        string Dev { get; } = "÷";//константа строки деления
+        string Div { get; } = "÷";//константа строки деления
 
         char mul { get; } = '×';//константа символа умножения
         char plus { get; } = '+';//константа символа плюса
         char minus { get; } = '-';//константа символа минуса
-        char dev { get; } = '÷';//константа символа деления
+        char div { get; } = '÷';//константа символа деления
 
         string FDot { get; } = ".";
         char Fdot { get; } = '.';
@@ -58,7 +57,7 @@ namespace CalcApp
         float MinWidText { get; } = 12f;//мин. размер поля для числа
         float MaxWidText { get; } = 32f;//макс. размер поля для числа
 
-        List<string> history { get; set; } = new List<string>();
+        List<string> History { get; set; } = new List<string>();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -303,7 +302,7 @@ namespace CalcApp
                     return;
                 }
             }
-            if (!Entering && CountOperations > 1 && (textBox2.Text.Last() == mul || textBox2.Text.Last() == plus || textBox2.Text.Last() == minus || textBox2.Text.Last() == dev
+            if (!Entering && CountOperations > 1 && (textBox2.Text.Last() == mul || textBox2.Text.Last() == plus || textBox2.Text.Last() == minus || textBox2.Text.Last() == div
                || textBox2.Text.Last() == 'd' || textBox2.Text.Last() == '^' || textBox2.Text.Last() == 't'))
             {//изменение операции -слеш- "заскобирование"
                 if (textBox2.Text.Last() == 'd')
@@ -328,7 +327,7 @@ namespace CalcApp
                 }
                 else
                 {
-                    if (Operation == Mul || Operation == Dev || Operation == "^")
+                    if (Operation == Mul || Operation == Div || Operation == "^")
                     {
                         if (textBox2.Text[textBox2.Text.Length - 3] != ')' && CountOperations > 2)
                         {
@@ -360,16 +359,9 @@ namespace CalcApp
 
         private void Solution(string text)
         {
-            if (text.Length > 2 && (text[text.Length - 1] == mul || text[text.Length - 1] == plus || text[text.Length - 1] == minus || text[text.Length - 1] == dev || text[text.Length - 1] == '^'))
-                text = text.Remove(text.Length - 2);
-            else if (text.Length > 2 && text[text.Length - 1] == 'd')
-                text = text.Remove(text.Length - 4);
-            else if (text.Length > 2 && text[text.Length - 1] == 't')
-                text = text.Remove(text.Length - 7);
-            if (text.Length > 0 && text[0] == ' ')
-                text = text.Remove(0, 1);
-            //все что было сверху это форматирование/подготовка строки для решения
-            history.Add(text);
+            text = string.Join(" ", text.Split(), 0, new string[]{ Plus, Minus, Mul, Div, "Mod", "^", "yroot" }.Any(x => x == text.Split().Last()) ? text.Split().Length - 1 : text.Split().Length)
+                   .Remove(0, text.Length > 0 && text[0] == ' ' ? 1 : 0);//форматирование/подготовка строки для решения
+            History.Add(text);//history maybe
             try //если решать ничего не нужно
             {
                 Result = Convert.ToDouble(text);
@@ -378,19 +370,8 @@ namespace CalcApp
             {
                 if (text.Contains("(")) //handler brackets
                 {
-                    int ibegin = -1, iend = -1, CountLeftBrackets = 0, CountRightBrackets = 0, oldiend = 0;//временные данные
-                    //for (int i = 0; i < text.Length; i++)
-                    //    if (text[i] == '(')
-                    //        CountLeftBrackets++;//счетчик левых скобок
-                    CountLeftBrackets = text.Count(x => x == '(');
-                    //for (int i = 0; i < text.Length; i++)
-                    //    if (text[i] == ')')
-                    //        CountRightBrackets++;//счетчик правых скобок
-                    CountRightBrackets = text.Count(x => x == ')');
-                    if (CountLeftBrackets > CountRightBrackets)
-                        text = text + new string(')', CountLeftBrackets - CountRightBrackets);//выравнивание скобок
-                    MessageBox.Show(text + "| contains a brackets");
-                    //for (int loop = 0; loop < CountLeftBrackets; loop++)//решение всех собок
+                    int ibegin = -1, iend = -1;//временные данные
+                    text += new string(')', text.Count(x => x == '(') - text.Count(x => x == ')'));//выравнивание скобок
                     while (text.Contains("("))
                     {
                         for (int i = 0; i < text.Length; i++) //поиск последней левой скобки
@@ -402,132 +383,45 @@ namespace CalcApp
                                 iend = j;
                                 break;
                             }
-
-                        oldiend = iend;//сохранение индекса для выхода из рекурсии
-                        string tmp = text;
-                        //
-                        //code of shit
-                        //
-                        if (ibegin > 0 && text[ibegin - 1] != ' ')//получаем функцию
+                        if (ibegin > 0 && text[ibegin - 1] != ' ')//получение функции
                         {
                             for (int i = ibegin - 1; i >= 0 && text[i] != ' '; i--)
                                 ibegin--;
-                            //for (int j = ibegin + 1; j < text.Length; j++)
-                            //    if (text[j] == ')')
-                            //        iend = j;
-                            if (iend != text.Length - 1)
-                                tmp = text.Remove(iend + 1);
-                            tmp = tmp.Remove(0, ibegin);
-                            MessageBox.Show(tmp + "| func");
-                            SolutionFunc(tmp);//и отправляем ее на решение
+                            SolutionFunc(text.Remove(iend).Remove(0, ibegin) + ")");//и отправление ее на решение
                         }
-                        else//получаем строку внитри скобок
-                        {
-
-                            if (oldiend <= text.Length - 1)
-                                tmp = text.Remove(oldiend);
-                            //if (tmp[0] == '(')
-                            tmp = tmp.Remove(0, ibegin + 1);
-                            MessageBox.Show(tmp + "| brackets");
-                            Solution(tmp);//и отправляем ее на решение(рекурсия)
-                        }
-                        CountBrackets--;//отсчитываем счетчик, т.к. решили скобку
-                        text = text.Remove(ibegin, oldiend - ibegin + 1);//убираем решенную скобку 
-                        text = text.Insert(ibegin, Result.ToString());//вставляем решение скобки
+                        else//получение строки внитри скобок
+                            Solution(text.Remove(iend).Remove(0, ibegin + 1));//и отправление ее на решение(рекурсия)
+                        text = text.Remove(ibegin, iend - ibegin + 1).Insert(ibegin, Result.ToString());//заменяет скобку на ее решение
                     }
                 }
                 try
                 {
-                    for (int i = 0; i < text.Length; i++) //degree and(or) root
+                    string[] txt = text.Split();//разделение строки на подстроки типа: число, операция, число, ...
+                    string[][] ranks = new string[][] { new string[] { Plus, Minus }, new string[] { Mul, Div, "Mod" }, new string[] { "^", "yroot" } };//создание рангов операций
+                    for (int i = txt.Length - 1, rank = 0; i > 0; i--)
                     {
-                        if ((text[i] == '^' && text[i - 1] == ' ' && text[i + 1] == ' ') || (text[i] == 'y' && text[i + 1] == 'r' && text[i + 2] == 'o' && text[i + 3] == 'o' && text[i + 4] == 't'))
-                        { //решение степеней
-                            int ibegin = i - 2, iend = i + 2;//создание начальных индексов
-                            if (text[i] == 'y' && text[i + 1] == 'r' && text[i + 2] == 'o' && text[i + 3] == 'o' && text[i + 4] == 't')
-                                iend += 4;
-                            string tmp = null;
-                            for (; ibegin >= 0 && (Char.IsDigit(text[ibegin]) || text[ibegin] == Fdot || text[ibegin] == minus); --ibegin)
-                                tmp = text[ibegin].ToString() + tmp; //поиск левого числа, т.е. стоящего перед операцией
-                            ibegin++;
-                            Digit = Convert.ToDouble(tmp);
-                            tmp = null;
-                            for (; iend <= text.Length - 1 && (Char.IsDigit(text[iend]) || text[iend] == Fdot); iend++)
-                                tmp += text[iend].ToString();//поиск правого числа, т.е. стоящего после операции
-                            Number = Convert.ToDouble(tmp);
-                            switch (text[i])
-                            {
-                                case '^': //возведение в степень
-                                    text = text.Remove(ibegin, iend - ibegin);
-                                    text = text.Insert(ibegin, Math.Pow(Digit, Number).ToString());
-                                    break;
-                                case 'y': //нахождение корня
-                                    text = text.Remove(ibegin, iend - ibegin);
-                                    text = text.Insert(ibegin, Math.Pow(Digit, 1.0 / Number).ToString());
-                                    break;
-                            }
-                            i = 0;//после решения оперции, поиск оперций происходит сначала
-                        }
-                    }
-                    for (int i = 0; i < text.Length; i++) //multiplication and(or) dividing and(or) Mod
-                    {
-                        if (text[i] == mul || (text[i] == dev && text[i - 1] == ' ' && text[i + 1] == ' ') || (text[i] == 'M' && text[i + 1] == 'o' && text[i + 2] == 'd'))
+                        if (ranks[rank].Any(x => x == txt[i]))//если на актуальном ранге есть совпадение операций
                         {
-                            int ibegin = i - 2, iend = i + 2;
-                            if (text[i] == 'M' && text[i + 1] == 'o' && text[i + 2] == 'd')
-                                iend += 2;
-                            string tmp = null;
-                            for (; ibegin >= 0 && (Char.IsDigit(text[ibegin]) || text[ibegin] == Fdot || text[ibegin] == minus); --ibegin)
-                                tmp = text[ibegin].ToString() + tmp;
-                            ibegin++;
-                            Digit = Convert.ToDouble(tmp);
-                            tmp = null;
-                            for (; iend <= text.Length - 1 && (Char.IsDigit(text[iend]) || text[iend] == Fdot); iend++)
-                                tmp += text[iend].ToString();
-                            Number = Convert.ToDouble(tmp);
-                            switch (text[i])
+                            Solution(string.Join(" ", txt, 0, i));//рекурсия для выявления первого операнда
+                            double num1 = Result;
+                            Solution(string.Join(" ", txt, i + 1, txt.Length - i - 1));//рекурсия для выявления второго операнда
+                            if (rank == 0)//разделение вычислений на ранги
+                                Result = ranks[rank][0] == txt[i] ? num1 + Result : num1 - Result;//+ or -
+                            else if (rank == 1)
+                                Result = ranks[rank][0] == txt[i] ? num1 * Result : (ranks[rank][1] == txt[i] ? num1 / Result : num1 % Result);//× or ÷ or mod
+                            else if (rank == 2)
+                                Result = ranks[rank][0] == txt[i] ? Math.Pow(num1, Result) : Math.Pow(num1, 1.0 / Result);//^ or yroot
+                            else//overflow of rank
                             {
-                                case '×': //умножение
-                                    text = text.Remove(ibegin, iend - ibegin);
-                                    text = text.Insert(ibegin, (Digit * Number).ToString());
-                                    break;
-                                case '÷': //деление
-                                    text = text.Remove(ibegin, iend - ibegin);
-                                    text = text.Insert(ibegin, (Digit / Number).ToString());
-                                    break;
-                                case 'M': //остаток от деления
-                                    text = text.Remove(ibegin, iend - ibegin);
-                                    text = text.Insert(ibegin, (Digit % Number).ToString());
-                                    break;
+                                MessageBox.Show("Code #2:\n" + $@"""{text}""" + "\n...\nUnknown error\nFor continued press OK.", "Error");
+                                buttonCancel.PerformClick();
                             }
-                            i = 0;
+                            break;//если нашли хоть одно совпадение оперций - это конечная, дальше дело за рекурсиями
                         }
-                    }
-                    for (int i = 0; i < text.Length; i++) //summation and(or) subtracting
-                    {
-                        if ((text[i] == plus && text[i - 1] == ' ' && text[i + 1] == ' ') || (text[i] == minus && text[i + 1] == ' '))
+                        if(i == 1)//повышение ранга
                         {
-                            int ibegin = i - 2, iend = i + 2;
-                            string tmp = null;
-                            for (; ibegin >= 0 && (Char.IsDigit(text[ibegin]) || text[ibegin] == Fdot || text[ibegin] == minus); --ibegin)
-                                tmp = text[ibegin].ToString() + tmp;
-                            ibegin++;
-                            Digit = Convert.ToDouble(tmp);
-                            tmp = null;
-                            for (; iend <= text.Length - 1 && (Char.IsDigit(text[iend]) || text[iend] == Fdot); iend++)
-                                tmp += text[iend].ToString();
-                            Number = Convert.ToDouble(tmp);
-                            switch (text[i])
-                            {
-                                case '+': //складывание
-                                    text = text.Remove(ibegin, iend - ibegin);
-                                    text = text.Insert(ibegin, (Digit + Number).ToString());
-                                    break;
-                                case '-': //вычитание
-                                    text = text.Remove(ibegin, iend - ibegin);
-                                    text = text.Insert(ibegin, (Digit - Number).ToString());
-                                    break;
-                            }
-                            i = 0;
+                            i = txt.Length;
+                            rank++;
                         }
                     }
                 }
@@ -535,23 +429,6 @@ namespace CalcApp
                 {//она обрабатывается как нерешаемая
                     MessageBox.Show("Code #3:\n" + $@"""{text}""" + "\n...\nUnknown error\nFor continued press OK.", "Error");
                     buttonCancel.PerformClick();
-                }
-                try
-                {
-                    Result = Convert.ToDouble(text);
-                }
-                catch
-                {
-                    try//попытка исправить
-                    {
-                        Solution(text);
-                        MessageBox.Show("Code #2:\n" + $@"""{text}""" + "\n...\nSuccessful corrected.\nFor continued press OK.", "Error");
-                    }
-                    catch//обработка неудачи
-                    {
-                        MessageBox.Show("Code #2:\n" + $@"""{text}""" + "\n...\nFailed corrected.\nFor continued press OK.", "Error");
-                        buttonCancel.PerformClick();
-                    }
                 }
             }
         }
@@ -680,35 +557,35 @@ namespace CalcApp
 
         private void buttonLeftBracket_Click(object sender, EventArgs e)
         {//открытие скобок
-            if (CountBrackets <= 25)
+            if (textBox2.Text.Count(x => x == '(') <= 25)
             {
                 if (textBox2.Text != "")//если поле с уравнениями не пустое
                 {
-                    if (textBox2.Text.Last() == mul || textBox2.Text.Last() == plus || textBox2.Text.Last() == minus || textBox2.Text.Last() == dev
+                    if (textBox2.Text.Last() == mul || textBox2.Text.Last() == plus || textBox2.Text.Last() == minus || textBox2.Text.Last() == div
                    || textBox2.Text.Last() == 'd' || textBox2.Text.Last() == '^' || textBox2.Text.Last() == 't')
                     {
                         //если есть операция - вставки скобки
                         textBox2.Text += " (";
-                        CountBrackets++;
+                        //CountBrackets++;
                     }
                     else if (textBox2.Text.Last() == '(')
                     {
                         {//если есть bracket - вставки скобки
                             textBox2.Text += " (";
-                            CountBrackets++;
+                            //CountBrackets++;
                         }
                     }
                     else//значит было решение без операций
                     {//очистка поля и вставка скобки
                         textBox2.Text = "";
                         buttonLeftBracket.PerformClick();
-                        CountBrackets = 1;
+                        //CountBrackets = 1;
                     }
                 }
                 else //ставим скобку
                 {
                     textBox2.Text += " (";
-                    CountBrackets++;
+                    //CountBrackets++;
                 }
             }
         }
@@ -1370,7 +1247,7 @@ namespace CalcApp
 /* А тута будут номера ошибок
  * code 0 - некорректность введенных значений в textBox1 при обработке новой операции (OperatingSymbols_Click)
  * code 1 - некорректность введенных значений в textBox1 при изменении знака числа (buttonPlusAndMinus_Click)
- * code 2 - не возможность преобразовать решение в число (Solution)
+ * code 2 - не получилось решить элементарные оперции, ранг операций вышел за предел (Solution)
  * code 3 - ошибка где-то в решении (Solution)
  * code 4
  * code 5

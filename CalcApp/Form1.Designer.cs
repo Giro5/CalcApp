@@ -1101,12 +1101,12 @@ namespace CalcApp
             // 
             this.labelMode.AutoSize = true;
             this.labelMode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelMode.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelMode.Font = new System.Drawing.Font("Swis721 Lt BT", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMode.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelMode.Location = new System.Drawing.Point(40, 0);
             this.labelMode.Margin = new System.Windows.Forms.Padding(0);
             this.labelMode.Name = "labelMode";
-            this.labelMode.Size = new System.Drawing.Size(111, 33);
+            this.labelMode.Size = new System.Drawing.Size(143, 39);
             this.labelMode.TabIndex = 2;
             this.labelMode.Text = "Scientific";
             // 
@@ -1240,7 +1240,7 @@ namespace CalcApp
             this.menuStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.menuStrip1.AutoSize = false;
-            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(72)))), ((int)(((byte)(72)))));
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cgjhghjToolStripMenuItem,
@@ -1303,7 +1303,6 @@ namespace CalcApp
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Modern No. 20", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MinimumSize = new System.Drawing.Size(337, 560);
             this.Name = "Form1";
             this.Opacity = 0.97D;
