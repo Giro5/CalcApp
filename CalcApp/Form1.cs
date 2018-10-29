@@ -57,7 +57,7 @@ namespace CalcApp
         float MinWidText { get; } = 12f;//мин. размер поля для числа
         float MaxWidText { get; } = 32f;//макс. размер поля для числа
 
-        List<string> History { get; set; } = new List<string>();
+        //List<string> History { get; set; } = new List<string>();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -236,7 +236,7 @@ namespace CalcApp
             {
                 if (textBox1.Text.Last() == '0' && (textBox1.Text[textBox1.Text.Length - 2] == plus || textBox1.Text[textBox1.Text.Length - 2] == minus))
                     textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
-                if (b.Text != FDot)
+                if (b.Text != FDot && textBox1.Text.Split('e')[1].Count() < 5)
                     textBox1.Text += b.Text;
             }
             else //обычные условия
@@ -361,7 +361,7 @@ namespace CalcApp
         {
             text = string.Join(" ", text.Split(), 0, new string[]{ Plus, Minus, Mul, Div, "Mod", "^", "yroot" }.Any(x => x == text.Split().Last()) ? text.Split().Length - 1 : text.Split().Length)
                    .Remove(0, text.Length > 0 && text[0] == ' ' ? 1 : 0);//форматирование/подготовка строки для решения
-            History.Add(text);//history maybe
+            //History.Add(text);//history maybe
             try //если решать ничего не нужно
             {
                 Result = Convert.ToDouble(text);
@@ -372,6 +372,7 @@ namespace CalcApp
                 {
                     int ibegin = -1, iend = -1;//временные данные
                     text += new string(')', text.Count(x => x == '(') - text.Count(x => x == ')'));//выравнивание скобок
+                    MessageBox.Show(text);
                     while (text.Contains("("))
                     {
                         for (int i = 0; i < text.Length; i++) //поиск последней левой скобки
@@ -397,6 +398,11 @@ namespace CalcApp
                 try
                 {
                     string[] txt = text.Split();//разделение строки на подстроки типа: число, операция, число, ...
+                    if (txt.Length < 3)
+                    {
+                        Result = Convert.ToDouble(text);
+                        return;
+                    }
                     string[][] ranks = new string[][] { new string[] { Plus, Minus }, new string[] { Mul, Div, "Mod" }, new string[] { "^", "yroot" } };//создание рангов операций
                     for (int i = txt.Length - 1, rank = 0; i > 0; i--)
                     {
@@ -957,7 +963,7 @@ namespace CalcApp
                     if (Result == 0)
                         Result = 1;
                     break;
-                case "10^"://10 в вашей степени (много не ставить, а то даже кальк винды ругается)
+                case "10^"://10 в степени (много не ставить, а то даже кальк винды ругается)
                     Result = Math.Pow(10.0, Result);
                     if (Double.IsInfinity(Result))
                         Stoper = true;
@@ -966,7 +972,7 @@ namespace CalcApp
                 case "sinᵣ":
                     Result *= 1.0 / PiDivide180;
                     Result = Math.Round(Result);
-                    goto case "sinₒ";//мое гениальное решение проблемы табличных значений
+                    goto case "sinₒ";//мое решение проблемы табличных значений
                 case "sinₒ":
                     if ((Result % 90.0 != 0.0) || (Result / 90.0 % 2.0 != 0.0))
                         Result = Math.Sin(PiDivide180 * Result);
@@ -1083,7 +1089,7 @@ namespace CalcApp
                     Result = 1.0 / PiDivede200 * Math.Atan(Result);
                     break;
                 //ending arc trigonometry func
-                case "1/"://один делите на, что хотите(кроме нуля)
+                case "1/"://один делите на... (кроме нуля)
                     Result = 1.0 / Result;
                     if (Double.IsInfinity(Result))
                         Stoper = true;
@@ -1195,27 +1201,27 @@ namespace CalcApp
 
         private void buttonMenu_Click(object sender, EventArgs e)
         {
-            if (menuStrip1.Visible == false)
-                menuStrip1.Visible = true;
+            if (Menu.Visible == false)
+                Menu.Visible = true;
             else
-                menuStrip1.Visible = false;
+                Menu.Visible = false;
         }
 
         private void buttonMenuChange_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem b = (ToolStripMenuItem)sender;
             labelMode.Text = b.Text;
-            menuStrip1.Visible = false;
+            Menu.Visible = false;
         }
 
         private void menuStrip1_MouseLeave(object sender, EventArgs e)
         {
-            menuStrip1.Visible = false;
+            Menu.Visible = false;
         }
 
         private void label1_MouseHover(object sender, EventArgs e)
         {//показывает апдейтики при наведении на версию
-            toolTip1.Show(LastUpdate, label1);
+            Tip.Show(LastUpdate, label1);
         }
 
         private void HoverOverButtonsIn(object sender, EventArgs e)

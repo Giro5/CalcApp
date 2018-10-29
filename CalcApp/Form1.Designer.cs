@@ -78,7 +78,7 @@ namespace CalcApp
             this.buttonMaximaze = new System.Windows.Forms.Button();
             this.buttonEscape = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox2 = new System.Windows.Forms.Label();
@@ -86,22 +86,22 @@ namespace CalcApp
             this.labelMode = new System.Windows.Forms.Label();
             this.buttonHistory = new System.Windows.Forms.Button();
             this.buttonMenu = new System.Windows.Forms.Button();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.Tip = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonHYP = new System.Windows.Forms.Button();
             this.buttonDRG = new System.Windows.Forms.Button();
             this.buttonM = new System.Windows.Forms.Button();
             this.buttonMC = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.Menu = new System.Windows.Forms.MenuStrip();
             this.cgjhghjToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.baseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.scientificToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelTop.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
+            this.ContextMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // button0
@@ -1020,7 +1020,7 @@ namespace CalcApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.ContextMenuStrip = this.contextMenuStrip1;
+            this.textBox1.ContextMenuStrip = this.ContextMenu;
             this.textBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.textBox1.Font = new System.Drawing.Font("Calibri", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -1037,18 +1037,18 @@ namespace CalcApp
             this.textBox1.WordWrap = false;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // contextMenuStrip1
+            // ContextMenu
             // 
-            this.contextMenuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.contextMenuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.contextMenuStrip1.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ContextMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ContextMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ContextMenu.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyToolStripMenuItem,
             this.pasteToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.contextMenuStrip1.ShowImageMargin = false;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(92, 60);
+            this.ContextMenu.Name = "contextMenuStrip1";
+            this.ContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.ContextMenu.ShowImageMargin = false;
+            this.ContextMenu.Size = new System.Drawing.Size(92, 60);
             // 
             // copyToolStripMenuItem
             // 
@@ -1140,11 +1140,11 @@ namespace CalcApp
             this.buttonMenu.UseVisualStyleBackColor = true;
             this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
             // 
-            // toolTip1
+            // Tip
             // 
-            this.toolTip1.AutoPopDelay = 0;
-            this.toolTip1.InitialDelay = 500;
-            this.toolTip1.ReshowDelay = 100;
+            this.Tip.AutoPopDelay = 0;
+            this.Tip.InitialDelay = 500;
+            this.Tip.ReshowDelay = 100;
             // 
             // tableLayoutPanel2
             // 
@@ -1235,26 +1235,26 @@ namespace CalcApp
             this.buttonMC.UseVisualStyleBackColor = true;
             this.buttonMC.Visible = false;
             // 
-            // menuStrip1
+            // Menu
             // 
-            this.menuStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Menu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.menuStrip1.AutoSize = false;
-            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(72)))), ((int)(((byte)(72)))));
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Menu.AutoSize = false;
+            this.Menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(72)))), ((int)(((byte)(72)))));
+            this.Menu.Dock = System.Windows.Forms.DockStyle.None;
+            this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cgjhghjToolStripMenuItem,
             this.baseToolStripMenuItem1,
             this.scientificToolStripMenuItem});
-            this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Table;
-            this.menuStrip1.Location = new System.Drawing.Point(0, 69);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.menuStrip1.Size = new System.Drawing.Size(219, 495);
-            this.menuStrip1.TabIndex = 33;
-            this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.Visible = false;
-            this.menuStrip1.MouseLeave += new System.EventHandler(this.menuStrip1_MouseLeave);
+            this.Menu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Table;
+            this.Menu.Location = new System.Drawing.Point(0, 69);
+            this.Menu.Name = "Menu";
+            this.Menu.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Menu.Size = new System.Drawing.Size(219, 495);
+            this.Menu.TabIndex = 33;
+            this.Menu.Text = "menuStrip1";
+            this.Menu.Visible = false;
+            this.Menu.MouseLeave += new System.EventHandler(this.menuStrip1_MouseLeave);
             // 
             // cgjhghjToolStripMenuItem
             // 
@@ -1292,7 +1292,7 @@ namespace CalcApp
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(341, 564);
             this.ControlBox = false;
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.Menu);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.panel1);
@@ -1313,12 +1313,12 @@ namespace CalcApp
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.ContextMenu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.Menu.ResumeLayout(false);
+            this.Menu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1376,17 +1376,17 @@ namespace CalcApp
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button buttonHistory;
         private System.Windows.Forms.Button buttonMenu;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip Tip;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button buttonHYP;
         private System.Windows.Forms.Button buttonDRG;
         private System.Windows.Forms.Label labelMode;
         private System.Windows.Forms.Button buttonM;
         private System.Windows.Forms.Button buttonMC;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip ContextMenu;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip Menu;
         private System.Windows.Forms.ToolStripMenuItem cgjhghjToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem baseToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem scientificToolStripMenuItem;
