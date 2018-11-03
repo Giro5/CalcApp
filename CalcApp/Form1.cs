@@ -246,7 +246,7 @@ namespace CalcApp
                     if (!textBox1.Text.Contains(FDot) && (textBox1.Text.Length != 0))
                         textBox1.Text += FDot;
                     else if (textBox1.Text.Length == 0)
-                        textBox1.Text = "0.";
+                        textBox1.Text = "0" + FDot;
                     Entering = true;
                 }
                 else if (b.Text == "0") //нуль
