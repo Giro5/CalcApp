@@ -157,7 +157,7 @@ namespace CalcApp
             this.buttonDot.Name = "buttonDot";
             this.buttonDot.Size = new System.Drawing.Size(62, 44);
             this.buttonDot.TabIndex = 3;
-            this.buttonDot.Text = ".";
+            this.buttonDot.Text = ",";
             this.buttonDot.UseVisualStyleBackColor = false;
             this.buttonDot.Click += new System.EventHandler(this.NumbersAndDot);
             // 
@@ -1250,10 +1250,9 @@ namespace CalcApp
             this.Menu.Location = new System.Drawing.Point(0, 69);
             this.Menu.Name = "Menu";
             this.Menu.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Menu.Size = new System.Drawing.Size(219, 489);
+            this.Menu.Size = new System.Drawing.Size(200, 489);
             this.Menu.TabIndex = 33;
             this.Menu.Text = "menuStrip1";
-            this.Menu.Visible = false;
             this.Menu.MouseLeave += new System.EventHandler(this.menuStrip1_MouseLeave);
             // 
             // cgjhghjToolStripMenuItem
@@ -1292,13 +1291,13 @@ namespace CalcApp
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(332, 558);
             this.ControlBox = false;
-            this.Controls.Add(this.Menu);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.Menu);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Modern No. 20", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
