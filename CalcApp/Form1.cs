@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Threading;
 
 namespace CalcApp
 {
@@ -42,8 +43,8 @@ namespace CalcApp
         char minus { get; } = '-';//константа символа минуса
         char div { get; } = '÷';//константа символа деления
 
-        string FDot { get; } = ".";
-        char Fdot { get; } = '.';
+        string FDot { get; } = ",";
+        char Fdot { get; } = ',';
 
         bool Entering { get; set; } = false;//вводится ли в данный момент число
         bool Cleaner { get; set; } = false;//очищать ли при след. действии поле
@@ -61,6 +62,7 @@ namespace CalcApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Menu.Size = new Size(0, Menu.Size.Height);
             Wid = ClientSize.Width; //сохранение ширины окна
             label1.Text += " " + Version; //приписка версии к названию программы
             ChangeSizeForm(); //нормирование ширины главного textbox'а
@@ -386,7 +388,10 @@ namespace CalcApp
                             }
                         if (ibegin > 0 && text[ibegin - 1] != ' ')//получение функции
                         {
-                            for (int i = ibegin - 1; i >= 0 && text[i] != ' '; i--)
+                            //
+                            //problem solved
+                            //
+                            for (int i = ibegin - 1; i >= 0 && text[i] != ' ' && text[i] != '('; i--)
                                 ibegin--;
                             SolutionFunc(text.Remove(iend).Remove(0, ibegin) + ")");//и отправление ее на решение
                         }
@@ -1201,22 +1206,35 @@ namespace CalcApp
 
         private void buttonMenu_Click(object sender, EventArgs e)
         {
-            if (Menu.Visible == false)
-                Menu.Visible = true;
-            else
-                Menu.Visible = false;
+            if /*(!Menu.Visible)*/(Menu.Size.Width == 0)
+            {
+                //Menu.Location = new Point(-100, 69);
+                //Menu.Visible = true;
+                for (int i = 1; i <= 200; i++)
+                {
+                    Menu.Size = new Size(i, Menu.Size.Height);
+                }
+            }
+            else/* if (Menu.Location.X == 0)*/
+            {
+                //MessageBox.Show(Menu.Location.X.ToString());
+                for (int i = 199; i >= 0; i--)
+                    Menu.Size = new Size(i, Menu.Size.Height);
+                //Menu.Visible = false;
+            }
         }
 
         private void buttonMenuChange_Click(object sender, EventArgs e)
-        {
+        { 
+            
             ToolStripMenuItem b = (ToolStripMenuItem)sender;
             labelMode.Text = b.Text;
-            Menu.Visible = false;
+            //Menu.Visible = false;
         }
 
         private void menuStrip1_MouseLeave(object sender, EventArgs e)
         {
-            Menu.Visible = false;
+            //Menu.Visible = false;
         }
 
         private void label1_MouseHover(object sender, EventArgs e)
